@@ -1,12 +1,6 @@
 # Diffused Heads 
 
-Official repository for Diffused Heads: Diffusion Models Beat GANs on Talking-Face Generation (WACV 2024).
-
 ### [Project](https://mstypulkowski.github.io/diffusedheads/) | [Paper](https://arxiv.org/abs/2301.03396) | [Demo](https://youtu.be/DSipIDj-5q0)
-
-<p align="center">
-<img src='./intro.gif' width=400>
-</p>
 
 ## Setup
 Python 3.x environment with [ffmpeg](https://www.ffmpeg.org/) is needed. The rest of the requirements can be installed using:
