@@ -1,0 +1,18 @@
+# CUDA 11.8
+
+torch==2.0.0 --index-url https://download.pytorch.org/whl/cu118
+torchvision==0.15.1 --index-url https://download.pytorch.org/whl/cu118
+torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu118
+
+# sox_io Only these above
+
+scikit-image
+decord
+ffmpeg_python
+hydra-core
+numpy<2
+opencv_python
+Pillow
+scipy
+tqdm
+lpips
