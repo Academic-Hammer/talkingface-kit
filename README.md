@@ -50,8 +50,6 @@
 docker build -f Dockerfile -t dagan .
 ```
 
-![image-20241217160545615](assets/image-20241217160545615.png)
-
 #### 运行镜像
 
 ```bash
@@ -130,8 +128,6 @@ generate-image `
 - kp_num: 关键点数量，默认15(使用其他数值报错)
 
 #### 
-
-![6a16392b23be30479712a0bf5b6d5c9](assets/6a16392b23be30479712a0bf5b6d5c9.png)
 
 ### 3. 模型评估
 
