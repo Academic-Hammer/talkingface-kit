@@ -81,6 +81,7 @@ docker run -it --rm --gpus all `
 
 分享的链接中结构如下：
 
+```tex
 ├─generate_299（00000299-checkpoint.pth.tar的交叉验证集生成图像）
 ├─generate_299_self（00000299-checkpoint.pth.tar的自重演验证集生成图像）
 ├─generate_364（00000364-checkpoint.pth.tar的交叉验证集生成图像）
@@ -91,6 +92,7 @@ docker run -it --rm --gpus all `
 ├─gt_self（自重演验证集驱动图像）
 ├─source_cross（交叉验证集源图像）
 └─source_self（自重演验证集源图像）
+```
 
 其中generate为前缀的是已经生成完成的图像集。
 
