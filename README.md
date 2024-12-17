@@ -2,7 +2,11 @@
 
 本项目复现了CVPR2022论文《Depth-Aware Generative Adversarial Network for Talking Head Video Generation》中的DaGAN模型。该模型通过引入深度感知机制来生成更加自然的人脸说话视频。
 
+## 复现效果
 
+下面的gif图链接展示的是复现效果的对比动图，从上到下依次是训练300轮的结果（2x4090RTX）、训练365轮的结果（在300轮的基础上使用4x4090RTX）、作者提供的最佳效果的checkpoint的生成结果和原视频，可点击链接或在dagan/assets目录下查看 
+
+- [gif图链接](https://github.com/nova728/talkingface-kit/blob/main/dagan/assets/result.gif)
 
 
 ## 环境要求
