@@ -15,7 +15,6 @@ WORKDIR /app
 
 # 复制需要的文件
 COPY requirements.txt /app/
-COPY entrypoint.sh /app/
 COPY . /app/
 
 # 安装 PyTorch 和相关依赖 
@@ -46,11 +45,10 @@ RUN cd face-alignment && \
 
 # 创建必要的目录 
 RUN mkdir -p /app/input_image \
-    /app/input_audio_text \
+    /app/input_video \
     /app/output_dir \
     /app/checkpoints
 
-# 设置入口脚本权限 
-RUN chmod +x /app/entrypoint.sh
-
-ENTRYPOINT ["/app/entrypoint.sh"]
+# 设置默认命令
+ENTRYPOINT ["python", "demo.py"]
+CMD ["--help"]

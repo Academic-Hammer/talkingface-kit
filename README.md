@@ -57,20 +57,28 @@ docker build -f Dockerfile -t dagan .
 #### 运行镜像
 
 ```bash
-docker run -it --rm --gpus all `
-    -v "${PWD}\input_image:/app/input_image" `
-    -v "${PWD}\input_video:/app/input_video" `
-    -v "${PWD}\output_dir:/app/output_dir" `
-    -v "${PWD}\checkpoints\00000299-checkpoint.pth.tar:/app/checkpoints/00000299-checkpoint.pth.tar" `
-    -v "${PWD}\entrypoint.sh:/app/entrypoint.sh" `
-    dagan
+docker run --gpus all `
+    -v ${PWD}/input_image:/app/input_image `
+    -v ${PWD}/input_video:/app/input_video `
+    -v ${PWD}/output_dir:/app/output_dir `
+    -v ${PWD}/checkpoints:/app/checkpoints `
+    dagan-test `
+    --config config/vox-adv-256.yaml `
+    --driving_video /app/input_video/video.mp4 `
+    --source_image /app/input_image/src.png `
+    --checkpoint /app/checkpoints/00000299-checkpoint.pth.tar `
+    --relative `
+    --adapt_scale `
+    --kp_num 15 `
+    --generator DepthAwareGenerator `
+    --result_video /app/output_dir/result.mp4
 ```
 
 #### 参数说明
 
-- driving_video：驱动视频的路径，自动取地中第一个文件，不用指定具体文件名
-- source_image：源图像的路径，自动取其中第一个文件，不用指定具体文件名
-- checkpoints：可选checkpoints文件夹下使用哪个checkpoint
+- driving_video：驱动视频的路径
+- source_image：源图像的路径
+- checkpoints：可选checkpoints文件夹下使用哪个checkpoint(需要下载)
 - output_dir：生成视频输出路径
 
 ### 2. 生成测试数据集
