@@ -8,6 +8,12 @@
 
 - [gif图链接](https://github.com/nova728/talkingface-kit/blob/main/dagan/assets/result.gif)
 
+## 复现效果
+
+下面的gif图链接展示的是复现效果的对比动图，从上到下依次是训练300轮的结果（2x4090RTX）、训练365轮的结果（在300轮的基础上使用4x4090RTX）、作者提供的最佳效果的checkpoint的生成结果和原视频，可点击链接或在dagan/assets目录下查看 
+
+- [gif图链接](https://github.com/nova728/talkingface-kit/blob/main/dagan/assets/result.gif)
+
 
 ## 环境要求
 
@@ -33,8 +39,8 @@
 
 链接中包含
 
-- 00000299-checkpoint.pth.tar（训练299轮得到结果）
-- 00000364-checkpoint.pth.tar（训练364轮得到结果）
+- 00000299-checkpoint.pth.tar（训练300轮得到结果）
+- 00000364-checkpoint.pth.tar（训练365轮得到结果）
 - DaGAN_vox_adv_256.pth.tar（原作者提供的最优训练结果）
 
 ## Docker使用说明
