@@ -200,12 +200,65 @@ def calculate_ssim_pt(img, img2, crop_border=0, test_y_channel=False, **kwargs):
     return ssim
 
 
-if __name__ =='__main__':
-    from skimage import io
-    clean = io.imread('clean/2762.png')
-    noisy = io.imread('noisy/2762.png')
-    print(calculate_psnr(clean, noisy, crop_border=0))
-    print(calculate_ssim(clean, noisy, crop_border=0))
+def img_scissors(img, origin_size, dest_size):  # 将img先裁剪为origin_size*origin_size，再resize为dest_size*dest_size
+    from skimage import io, transform
+    from skimage.util import img_as_ubyte
 
-    print(calculate_psnr_pt(img2tensor(clean), img2tensor(noisy)))
-    print(calculate_ssim_pt(img2tensor(clean), img2tensor(noisy)))
+    height, width = img.shape[:2]
+    center_y, center_x = height // 2, width // 2
+    crop_size = origin_size
+    half_crop = crop_size // 2
+    start_x = max(center_x - half_crop, 0)
+    start_y = max(center_y - half_crop, 0)
+    end_x = min(center_x + half_crop, width)
+    end_y = min(center_y + half_crop, height)
+    cropped_img = img[start_y:end_y, start_x:end_x]
+    resized_img = transform.resize(cropped_img, (dest_size, dest_size), anti_aliasing=True)
+    resized_img_ubyte = img_as_ubyte(resized_img)
+    return resized_img_ubyte
+
+
+if __name__ == '__main__':
+    params_path = 'pre-train-models/'
+    '''
+    PSNR 是用来衡量图像之间的差异程度的指标，基于均方误差（MSE）。PSNR值越高,图像质量越好。
+    SSIM 是一种衡量两幅图像在亮度、对比度和结构信息上的相似性的方法，SSIM值在 [0, 1] 之间，1 表示完全相同。0.8 以上表示较好的结构相似度。
+    '''
+    video_origin = cv2.VideoCapture("MP4/Jae-in.mp4")   # 在这里修改路径，改为想要计算的视频路径，video_origin即原视频
+    video_result = cv2.VideoCapture("MP4/Jae-inRes.mp4")    # 在这里修改路径，改为想要计算的视频路径，video_result即hallo生成的视频
+    # save_path = "JPG/Jae-in"    # 用于定性评估的帧图像保存的路径
+    index = 0
+    PSNR = 0.0
+    SSIM = 0.0
+    if video_origin.isOpened() and video_result.isOpened():
+        rval_origin, frame_origin = video_origin.read()  # 读取视频帧
+        rval_result, frame_result = video_result.read()
+    else:
+        rval_origin = False
+        rval_result = False
+
+    while rval_origin and rval_result:
+        print(index)
+        rval_origin, frame_origin = video_origin.read()
+        img_origin = img_scissors(frame_origin, 720, 512)
+        rval_result, frame_result = video_result.read()
+        img_result = frame_result
+        if img_origin is None or img_result is None:
+            break
+        else:
+            # if index % 300 == 0:
+            #     print(str(index) + "抽一帧图片定性评估")
+            #     cv2.imwrite(save_path + "/" + str(index) + ".jpg", img_origin)
+            #     cv2.imwrite(save_path + "/" + str(index) + "Res.jpg", img_result)
+            # niqe_origin += calculate_niqe(img_origin, crop_border=0, params_path=params_path)
+            # niqe_result += calculate_niqe(img_result, crop_border=0, params_path=params_path)
+            # print(niqe1, niqe2)
+            PSNR_temp = calculate_psnr(img_origin, img_result, crop_border=0)
+            PSNR += PSNR_temp
+            SSIM_temp = calculate_ssim(img_origin, img_result, crop_border=0)
+            SSIM += SSIM_temp
+            print(PSNR_temp, SSIM_temp)
+            index += 1
+    PSNR /= index
+    SSIM /= index
+    print(PSNR, SSIM) 
