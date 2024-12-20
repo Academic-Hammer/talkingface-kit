@@ -227,8 +227,8 @@ if __name__ == '__main__':
     SSIM 是一种衡量两幅图像在亮度、对比度和结构信息上的相似性的方法，SSIM值在 [0, 1] 之间，1 表示完全相同。
     0.8 以上表示较好的结构相似度。
     '''
-    video_origin = cv2.VideoCapture("MP4/Obama2.mp4")   # 在这里修改路径，改为想要计算的视频路径，video_origin即原视频
-    video_result = cv2.VideoCapture("MP4/Obama2Res.mp4")    # 在这里修改路径，改为想要计算的视频路径，video_result即hallo生成的视频
+    video_origin = cv2.VideoCapture("MP4/Shaheen.mp4")   # 在这里修改路径，改为想要计算的视频路径，video_origin即原视频
+    video_result = cv2.VideoCapture("MP4/ShaheenRes.mp4")    # 在这里修改路径，改为想要计算的视频路径，video_result即hallo生成的视频
     index = 0
     PSNR = 0.0
     SSIM = 0.0
