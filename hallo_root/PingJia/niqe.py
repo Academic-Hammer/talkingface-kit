@@ -179,45 +179,60 @@ def calculate_niqe(img, crop_border, params_path, input_order='HWC', convert_to=
 
     return niqe_result
 
-if __name__ =='__main__':
-    from skimage import io
+
+def img_scissors(img, origin_size, dest_size):  # 将img先裁剪为origin_size*origin_size，再resize为dest_size*dest_size
+    from skimage import io, transform
+    from skimage.util import img_as_ubyte
+
+    height, width = img.shape[:2]
+    center_y, center_x = height // 2, width // 2
+    crop_size = origin_size
+    half_crop = crop_size // 2
+    start_x = max(center_x - half_crop, 0)
+    start_y = max(center_y - half_crop, 0)
+    end_x = min(center_x + half_crop, width)
+    end_y = min(center_y + half_crop, height)
+    cropped_img = img[start_y:end_y, start_x:end_x]
+    resized_img = transform.resize(cropped_img, (dest_size, dest_size), anti_aliasing=True)
+    resized_img_ubyte = img_as_ubyte(resized_img)
+    return resized_img_ubyte
+
+
+if __name__ == '__main__':
     params_path = 'pre-train-models/'
     '''
     NIQE值越小,图像质量越好。
     '''
-
-    video_origin = cv2.VideoCapture("MP4/Macron.mp4")
-    video_result = cv2.VideoCapture("MP4/MacronRes.mp4")
-    save_path = "JPG/Macron"
+    video_origin = cv2.VideoCapture("MP4/Lieu.mp4")
+    video_result = cv2.VideoCapture("MP4/LieuRes.mp4")
+    save_path = "JPG/Lieu"
     index = 0
-    niqe1 = 0.0
-    niqe2 = 0.0
+    niqe_origin = 0.0
+    niqe_result = 0.0
     if video_origin.isOpened() and video_result.isOpened():
-        # f = int(video.get(cv2.CAP_PROP_FPS))  # 读取视频帧率
-        # print("The video's fps is ", f)  # 显示视频帧率
-        rval1, frame1 = video_origin.read()  # 读取视频帧
-        rval2, frame2 = video_result.read()
+        rval_origin, frame_origin = video_origin.read()  # 读取视频帧
+        rval_result, frame_result = video_result.read()
     else:
-        rval1 = False
-        rval2 = False
+        rval_origin = False
+        rval_result = False
 
-    while rval1 and rval2:
-        # print(str(index) + "  niqe1:" + str(niqe1) + ", niqe2:" + str(niqe2))
+    while rval_origin and rval_result:
         print(index)
-        rval1, frame1 = video_origin.read()
-        rval2, frame2 = video_result.read()
-        if frame1 is None or frame2 is None:
+        rval_origin, frame_origin = video_origin.read()
+        img_origin = img_scissors(frame_origin, 720, 512)
+        rval_result, frame_result = video_result.read()
+        img_result = frame_result
+        if img_origin is None or img_result is None:
             break
         else:
-            # cv2.imwrite(save_path + "/" + str(index) + ".jpg", frame)
             if index % 300 == 0:
                 print(str(index) + "抽一帧图片定性评估")
-                cv2.imwrite(save_path + "/" + str(index) + ".jpg", frame1)
-                cv2.imwrite(save_path + "/" + str(index) + "Res.jpg", frame2)
-            niqe1 += calculate_niqe(frame1, crop_border=0, params_path=params_path)
-            niqe2 += calculate_niqe(frame2, crop_border=0, params_path=params_path)
+                cv2.imwrite(save_path + "/" + str(index) + ".jpg", img_origin)
+                cv2.imwrite(save_path + "/" + str(index) + "Res.jpg", img_result)
+            niqe_origin += calculate_niqe(img_origin, crop_border=0, params_path=params_path)
+            niqe_result += calculate_niqe(img_result, crop_border=0, params_path=params_path)
             # print(niqe1, niqe2)
             index += 1
-    niqe1 /= index
-    niqe2 /= index
-    print(niqe1, niqe2)
+    niqe_origin /= index
+    niqe_result /= index
+    print(niqe_origin, niqe_result) 
