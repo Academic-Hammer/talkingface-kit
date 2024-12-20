@@ -222,11 +222,13 @@ if __name__ == '__main__':
     params_path = 'pre-train-models/'
     '''
     PSNR 是用来衡量图像之间的差异程度的指标，基于均方误差（MSE）。PSNR值越高,图像质量越好。
-    SSIM 是一种衡量两幅图像在亮度、对比度和结构信息上的相似性的方法，SSIM值在 [0, 1] 之间，1 表示完全相同。0.8 以上表示较好的结构相似度。
+    通常情况下，30 dB 以上被认为是较高质量。20-30 dB 之间为可接受的质量。低于 20 dB 则质量较差。
+    
+    SSIM 是一种衡量两幅图像在亮度、对比度和结构信息上的相似性的方法，SSIM值在 [0, 1] 之间，1 表示完全相同。
+    0.8 以上表示较好的结构相似度。
     '''
     video_origin = cv2.VideoCapture("MP4/Jae-in.mp4")   # 在这里修改路径，改为想要计算的视频路径，video_origin即原视频
     video_result = cv2.VideoCapture("MP4/Jae-inRes.mp4")    # 在这里修改路径，改为想要计算的视频路径，video_result即hallo生成的视频
-    # save_path = "JPG/Jae-in"    # 用于定性评估的帧图像保存的路径
     index = 0
     PSNR = 0.0
     SSIM = 0.0
@@ -244,15 +246,9 @@ if __name__ == '__main__':
         rval_result, frame_result = video_result.read()
         img_result = frame_result
         if img_origin is None or img_result is None:
+            print("Loop End.")
             break
         else:
-            # if index % 300 == 0:
-            #     print(str(index) + "抽一帧图片定性评估")
-            #     cv2.imwrite(save_path + "/" + str(index) + ".jpg", img_origin)
-            #     cv2.imwrite(save_path + "/" + str(index) + "Res.jpg", img_result)
-            # niqe_origin += calculate_niqe(img_origin, crop_border=0, params_path=params_path)
-            # niqe_result += calculate_niqe(img_result, crop_border=0, params_path=params_path)
-            # print(niqe1, niqe2)
             PSNR_temp = calculate_psnr(img_origin, img_result, crop_border=0)
             PSNR += PSNR_temp
             SSIM_temp = calculate_ssim(img_origin, img_result, crop_border=0)
