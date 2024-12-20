@@ -203,9 +203,9 @@ if __name__ == '__main__':
     '''
     NIQE值越小,图像质量越好。
     '''
-    video_origin = cv2.VideoCapture("MP4/Lieu.mp4")
-    video_result = cv2.VideoCapture("MP4/LieuRes.mp4")
-    save_path = "JPG/Lieu"
+    video_origin = cv2.VideoCapture("MP4/Jae-in.mp4")   # 在这里修改路径，改为想要计算NIQE的视频路径，video_origin即原视频
+    video_result = cv2.VideoCapture("MP4/Jae-inRes.mp4")    # 在这里修改路径，改为想要计算NIQE的视频路径，video_result即hallo生成的视频
+    save_path = "JPG/Jae-in"    # 用于定性评估的帧图像保存的路径
     index = 0
     niqe_origin = 0.0
     niqe_result = 0.0
