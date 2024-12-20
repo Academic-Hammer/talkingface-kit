@@ -68,7 +68,7 @@ docker run --gpus all `
     -v ${PWD}/input_video:/app/input_video `
     -v ${PWD}/output_dir:/app/output_dir `
     -v ${PWD}/checkpoints:/app/checkpoints `
-    dagan-test `
+    dagan `
     --config config/vox-adv-256.yaml `
     --driving_video /app/input_video/video.mp4 `
     --source_image /app/input_image/src.png `
