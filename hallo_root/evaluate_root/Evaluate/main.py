@@ -108,7 +108,7 @@ if __name__ == "__main__":
             SSIM += psnr_ssim.calculate_ssim(img_source, img_hallo, crop_border=0)
             
             print(index)
-            # index += 1
+            index += 1
     
     niqe_source /= index
     niqe_hallo /= index

@@ -11,4 +11,4 @@ COPY . /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 设置容器启动时默认执行的命令
-CMD ["python", "Evaluate/main.py"]
+CMD cd Evaluate && python main.py

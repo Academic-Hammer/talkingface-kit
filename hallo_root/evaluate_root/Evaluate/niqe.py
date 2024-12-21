@@ -229,7 +229,35 @@ def NIQE(video_origin, video_result):
 
 
 if __name__ == '__main__':
-    video_origin = cv2.VideoCapture("../MP4/Source/Shaheen.mp4")
-    video_result = cv2.VideoCapture("../MP4/Hallo/Shaheen.mp4")
-    print(NIQE(video_origin, video_result))
+    params_path = 'pre-train-models/'
+
+    index = 0
+    example_source_video_path = '../MP4/Source'
+    example_hallo_video_path = '../MP4/Hallo'
+    example_FID_source_img_path = '../JpgForQualitative/Macron'
+    example_source_video = cv2.VideoCapture(example_source_video_path + "/Macron.mp4")
+    example_hallo_video = cv2.VideoCapture(example_hallo_video_path + "/Macron.mp4")
+    
+    if example_source_video.isOpened() and example_hallo_video.isOpened():
+        rval_source, frame_source = example_source_video.read()  # 读取视频帧
+        rval_hallo, frame_hallo = example_hallo_video.read()
+    else:
+        rval_source = False
+        rval_hallo = False
+
+    while rval_source and rval_hallo:
+        # 对视频的每一帧进行处理
+        rval_source, frame_source = example_source_video.read()
+        img_source = img_scissors(frame_source, 720, 512)  # 对源视频的帧图像进行尺寸统一处理
+        rval_hallo, frame_hallo = example_hallo_video.read()
+        img_hallo = frame_hallo
+        if img_source is None or img_hallo is None:
+            print("Loop End.")
+            break
+        else:
+            if index % 100 == 0:
+                cv2.imwrite(example_FID_source_img_path + "/" + str(index) + ".jpg", img_source)
+                cv2.imwrite(example_FID_source_img_path + "/" + str(index) + "Res.jpg", img_hallo)
+            print(index)
+            index += 1
     
