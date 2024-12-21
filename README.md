@@ -166,7 +166,7 @@ docker run --gpus all `
   --output_path /app/evaluation_result `
   --device cuda `
   --batch_size 1 `
-  --generate_dirs generate_299
+  --generate_dirs generate_299_self
 ```
 
 #### 参数说明:
