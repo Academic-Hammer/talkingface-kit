@@ -1,0 +1,2 @@
+python run_pipeline.py --videofile /path/to/your/video --reference wav2lip --data_dir tmp_dir
+python calculate_scores_real_videos.py --videofile /path/to/you/video --reference wav2lip --data_dir tmp_dir >> all_scores.txt
