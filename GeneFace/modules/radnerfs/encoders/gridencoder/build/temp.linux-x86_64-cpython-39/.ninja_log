@@ -1,0 +1,5 @@
+# ninja log v5
+0	8545	1734544875488560913	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/src/bindings.o	3bc810f1e4b85d3f
+0	85171	1734544952108549649	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/src/gridencoder.o	88955bbd8104c5fc
+3	10749	1734727617948464440	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/src/bindings.o	5367f8c6d8b974d9
+3	105913	1734727713117403725	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/gridencoder/src/gridencoder.o	3e30f7bf4daa23a

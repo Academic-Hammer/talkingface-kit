@@ -1,0 +1,5 @@
+# ninja log v5
+0	9696	1734544812438584295	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/bindings.o	22e7fe38871cfad7
+0	29662	1734544832408579648	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/freqencoder.o	3f67d6a89a5c2de0
+3	11264	1734727531907615244	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/bindings.o	25289ba77012d03f
+4	39558	1734727560207894560	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/freqencoder.o	dec9848bde2c8ff2
