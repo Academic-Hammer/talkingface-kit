@@ -68,7 +68,7 @@ _由于项目镜像过大（约30G），镜像传输麻烦，所以我们没有�
 + 从我们的tar包获取镜像
   `docker load --input /path/to/hallo_image.tar`注意修改文件路径。
 + 使用dockerfile构建
-  1、使用`git@github.com:fudan-generative-vision/hallo.git`下载项目，在将dockerfile放到项目根目录下
+  1、使用`git@github.com:fudan-generative-vision/hallo.git`下载项目，再将dockerfile放到项目根目录下
   2、运行`docker build -t hallo_image:2.0 .`构建镜像(可根据个人喜好，修改镜像名和tag，这里使用我们镜像完善的最后一版，如修改了镜像名和路径，注意对后续的命令也进行修改)
 
 ### 2、新建用于挂载数据的文件夹

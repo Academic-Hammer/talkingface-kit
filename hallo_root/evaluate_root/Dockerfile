@@ -26,6 +26,3 @@ RUN pip install insightface
 # 安装项目的依赖
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install --no-cache-dir -r requirements.txt
-
-# 设置容器启动时默认执行的命令
-CMD cd Evaluate && python main.py
