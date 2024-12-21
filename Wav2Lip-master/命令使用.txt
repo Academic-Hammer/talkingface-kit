@@ -1,0 +1,29 @@
+python run_pipeline.py --videofile G:\Wav2Lip-master\Wav2Lip-master\results\result_voice.mp4 --reference wav2lip --data_dir tmp_dir
+python calculate_scores_real_videos.py --videofile G:\Wav2Lip-master\Wav2Lip-master\results\result_voice.mp4 --reference wav2lip --data_dir tmp_dir >> all_scores.txt
+python inference.py --checkpoint_path checkpoints\wav2lip_gan.pth --face inputmp4\video1.mp4 --audio inputwav\test1.wav
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+python get_frames.py path/to/your/video.mp4 --output_folder Wav2Lip-master\Wav2Lip-master\evaluation\outputframes --frame_interval 1 --max_threads 4
+python run_pipeline.py --videofile /Wav2Lip-master/Wav2Lip-master/evaluation/syncnet_python-master/video/result_voice.mp4 --reference wav2lip --data_dir tmp_dir
+python -m pytorch_fid path/to/dataset1 path/to/dataset2
+set KMP_DUPLICATE_LIB_OK=TRUE
+G:\Wav2Lip-master\Wav2Lip-master\videos\May.mp4
+>python get_frames.py G:\Wav2Lip-master\Wav2Lip-master\results\result_voice.mp4 --output_folder evaluation\outputframes --frame_interval 1 --max_threads 4
+>python get_frames.py videos\Jae-in.mp4 --output_folder evaluation\inputframes --frame_interval 1 --max_threads 4
+python -m pytorch_fid evaluation\inputframes evaluation\outputframes
+
+
+
+
+docker exec -it yuyinshibie /bin/bash
+python inference.py --checkpoint_path checkpoints/wav2lip_gan.pth --face /workspace/inputmp4/video1.mp4 --audio /workspace/inputwav/test1.wav
+python run_pipeline.py --videofile /workspace/Wav2Lip-master/Wav2Lip-master/results/result_voice.mp4 --reference wav2lip --data_dir tmp_dir
+python calculate_scores_real_videos.py --videofile /workspace/Wav2Lip-master/Wav2Lip-master/results/result_voice.mp4 --reference wav2lip --data_dir tmp_dir >> all_scores.txt
+python get_frames.py /workspace/Wav2Lip-master/Wav2Lip-master/results/result_voice.mp4 --output_folder /workspace/Wav2Lip-master/Wav2Lip-master/evaluation/pytorch-fid-master/outputframes --frame_interval 1 --max_threads 4
+python get_frames.py /workspace/inputmp4/video1.mp4 --output_folder /workspace/Wav2Lip-master/Wav2Lip-master/evaluation/pytorch-fid-master/inputframes --frame_interval 1 --max_threads 4
+python -m pytorch_fid inputframes outputframes --num-workers 0 --device cuda:0
+
+docker run --hostname=docker-desktop --env=PYTORCH_VERSION=2.4.1 --env=PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/opt/conda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=NVIDIA_VISIBLE_DEVICES=all --env=NVIDIA_DRIVER_CAPABILITIES=compute,utility --env=LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64 --volume=G:\yuyin\result:/workspace/Wav2Lip-master/Wav2Lip-master/results --volume=G:\yuyin\inputmp4:/workspace/inputmp4 --volume=G:\yuyin\inputwzv:/workspace/inputwav --network=host --privileged --workdir=/workspace --restart=no --label=''com.nvidia.volumes.needed=nvidia_driver'' --label=''org.opencontainers.image.ref.name=ubuntu'' --label=''org.opencontainers.image.version=22.04'' --label='com.nvidia.volumes.needed=nvidia_driver' --label='org.opencontainers.image.ref.name=ubuntu' --label='org.opencontainers.image.version=22.04' --shm-size=3g --gpus all --runtime=runc --name=xxxx -t -d yuyinshibie:v3
+
+FID:  20.354803087631055
+FID:  44.9185183060483
+FID:  14.43842736648849

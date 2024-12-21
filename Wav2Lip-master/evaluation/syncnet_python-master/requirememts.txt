@@ -1,0 +1,31 @@
+# packages in environment at H:\anaconda3\envs\syncnet:
+#
+# Name                    Version                   Build  Channel
+appdirs                   1.4.4                    pypi_0    pypi
+ca-certificates           2024.11.26           haa95532_0  
+certifi                   2024.12.14               pypi_0    pypi
+charset-normalizer        3.4.0                    pypi_0    pypi
+click                     8.1.7                    pypi_0    pypi
+colorama                  0.4.6                    pypi_0    pypi
+idna                      3.10                     pypi_0    pypi
+numpy                     1.22.4                   pypi_0    pypi
+opencv-contrib-python     4.10.0.84                pypi_0    pypi
+openssl                   1.1.1w               h2bbff1b_0  
+pillow                    11.0.0                   pypi_0    pypi
+pip                       24.2             py39haa95532_0  
+python                    3.9.0                h6244533_2  
+python-speech-features    0.6                      pypi_0    pypi
+requests                  2.32.3                   pypi_0    pypi
+scenedetect               0.6                      pypi_0    pypi
+scipy                     1.13.1                   pypi_0    pypi
+setuptools                75.1.0           py39haa95532_0  
+sqlite                    3.45.3               h2bbff1b_0  
+torch                     1.11.0                   pypi_0    pypi
+torchvision               0.12.0                   pypi_0    pypi
+tqdm                      4.67.1                   pypi_0    pypi
+typing-extensions         4.12.2                   pypi_0    pypi
+tzdata                    2024b                h04d1e81_0  
+urllib3                   2.2.3                    pypi_0    pypi
+vc                        14.40                haa95532_2  
+vs2015_runtime            14.42.34433          h9531ae6_2  
+wheel                     0.44.0           py39haa95532_0  
