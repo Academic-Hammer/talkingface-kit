@@ -197,18 +197,13 @@ def img_scissors(img, origin_size, dest_size):  # 将img先裁剪为origin_size*
     resized_img_ubyte = img_as_ubyte(resized_img)
     return resized_img_ubyte
 
-
-if __name__ == '__main__':
+def NIQE(video_origin, video_result):
     params_path = 'pre-train-models/'
-    '''
-    NIQE值越小,图像质量越好。
-    '''
-    video_origin = cv2.VideoCapture("MP4/Shaheen.mp4")   # 在这里修改路径，改为想要计算NIQE的视频路径，video_origin即原视频
-    video_result = cv2.VideoCapture("MP4/ShaheenRes.mp4")    # 在这里修改路径，改为想要计算NIQE的视频路径，video_result即hallo生成的视频
-    save_path = "JPG/Shaheen"    # 用于定性评估的帧图像保存的路径
+
     index = 0
     niqe_origin = 0.0
     niqe_result = 0.0
+    
     if video_origin.isOpened() and video_result.isOpened():
         rval_origin, frame_origin = video_origin.read()  # 读取视频帧
         rval_result, frame_result = video_result.read()
@@ -217,7 +212,7 @@ if __name__ == '__main__':
         rval_result = False
 
     while rval_origin and rval_result:
-        print(index)
+        
         rval_origin, frame_origin = video_origin.read()
         img_origin = img_scissors(frame_origin, 720, 512)
         rval_result, frame_result = video_result.read()
@@ -225,14 +220,16 @@ if __name__ == '__main__':
         if img_origin is None or img_result is None:
             break
         else:
-            if index % 300 == 0:
-                print(str(index) + "抽一帧图片定性评估")
-                cv2.imwrite(save_path + "/" + str(index) + ".jpg", img_origin)
-                cv2.imwrite(save_path + "/" + str(index) + "Res.jpg", img_result)
             niqe_origin += calculate_niqe(img_origin, crop_border=0, params_path=params_path)
             niqe_result += calculate_niqe(img_result, crop_border=0, params_path=params_path)
-            # print(niqe1, niqe2)
             index += 1
     niqe_origin /= index
     niqe_result /= index
-    print(niqe_origin, niqe_result) 
+    return("The source video NIQE: " + str(niqe_origin) + "\nThe hallo genarated video NIQE: " + str(niqe_result))
+
+
+if __name__ == '__main__':
+    video_origin = cv2.VideoCapture("../MP4/Source/Shaheen.mp4")
+    video_result = cv2.VideoCapture("../MP4/Hallo/Shaheen.mp4")
+    print(NIQE(video_origin, video_result))
+    
