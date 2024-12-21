@@ -1,93 +1,136 @@
-# EmoTalk大作业
+# Emotalk训练
 
-原仓库链接：[psyai-net/EmoTalk_release: This is the official source for our ICCV 2023 paper "EmoTalk: Speech-Driven Emotional Disentanglement for 3D Face Animation" (github.com)](https://github.com/psyai-net/EmoTalk_release)
+### 我们复现的最终模型：
 
-封装后的可运行项目：https://pan.baidu.com/s/1ZO7TercF4GeucMflwcy9zw?pwd=jdkv
+通过网盘分享的文件：emotalk_model_only_params.pth
+链接: https://pan.baidu.com/s/1EkeNTIqZ5QIZwLBmYHSGVA?pwd=fiuu 提取码: fiuu 
+--来自百度网盘超级会员v5的分享
 
-###  本项目用于记录EmoTalk小组大作业的所有工作，包括以下内容：
+### 训练代码讲解视频：
 
-- **论文学习**：学习相关方法并进行记录。
+通过百度网盘分享的文件：Emotalk训练代码解释视频.mp4
+链接：https://pan.baidu.com/s/1Jujn-PDhUfhRrqJB2xDCCQ?pwd=lqfs 
+提取码：lqfs
 
-- **部署环境**：对原仓库代码进行修改以适应不同环境。
+### 邮件记录&氪金记录：
 
-- **测试指标**：包括定量测试老师提供的指标和定性测试论文的评价指标。
+数据集申请
 
-- **改进创新**：将原仓库的推理模型改为训练，成功复现论文的训练。
+![image-20241215230317366](./image/media/image10.png)
 
-  
+分类损失疑问询问作者邮件（未回复）：
 
-## 项目结构和组成
-```plaintext
-实验报告.docx       #二、实验报告，按照北理学报格式
-code/              # 我们的代码工作汇总
-  ├── EmoTalk_win/      # 修改后的Windows下可运行项目
-  ├── test/             # 测试老师测试集的LSE-C，LSE-D评价指标，以及定性评价论文提供的评价指标
-  ├── train/            # 将原仓库的推理模型改为训练模型
-EmoTalk使用文档.docx        #3.3、封装后的可运行项目配置文档
-组内评价.docx        #一、组内分工及组内评价
-```
+![f8d056e241dcdfb6bfed14e865ebeb1](./image/media/image11.png)
+
+华为云成本
+
+![image-20241215230102442](./image/media/image9.png)
 
 
-# 文件说明
 
-## 1. 实验报告.docx
-包括模型简介，实验困难及解决方案，模型的定性及定量评价结果及可能改进方法
+训练部分所有资料会尽快发到助教邮箱，后面内容就是《代码说明报告》：
 
-## 2. Code
-我们的主要代码工作汇总，包括以下子模块：
+## 1.3D-ETF数据集
 
-### 2.1 EmoTalk
-修改后的可运行项目，Windows环境下使用。
+数据集包括两个广泛使用的 2D 视听数据集，RAVDESS和HDTF。 RAVDESS数据，也被称为瑞尔森情感言语和歌曲的视听数据库，是一个多模态情绪识别数据集，由24 名演员（12 名男性，12名女性）和1440个简短演讲视频剪辑组成。该数据集是通过高质量的音频和视频记录捕获的，并指示演员表达特定的情绪，包括中性、平静、快乐、悲伤、愤怒、恐惧、厌恶和惊讶。HDTF数据集是过去几年从YouTube
+获取的大约16小时的720P-1080P视频的集合。该数据集包括300多个主题和10k个不同的句子。
 
-**注意事项**：
-- 需要手动下载以下模型并放置到指定目录：
-  - **`wav2vec2-large-xlsr-53-english`** 和 **`wav2vec-english-speech-emotion-recognition`**，下载后存放至 `models/` 文件夹。
-  - **`EmoTalk.pth`**，下载后存放至 `pretrain_model/` 文件夹。
-- 其他具体信息参考[环境部署教程](code/EmoTalk_win#readme)。
+来自 RAVDESS 数据集的1440个视频和来自 HDTF数据集的385个视频被处理，将它们转换为每秒 30帧并捕获每帧的面部混合形状。为了提高数据集的质量并减少帧到帧的抖动，将窗口长度为5、多项式阶数为2的Savitsky-Golay滤波器应用于输出的blendshape 系数，这显着提高了面部动画的平滑度。RAVDESS 数据集生成了159,702 帧的 blendshape 系数，相当于大约 1.5小时的视频内容。同时，HDTF数据集生成了543,240帧的blendshape系数，相当于大约5 小时的视频内容。所有生成的blendshape系数都使用 transform模块转换为网格顶点。
 
-### 2.2 test
-用于测试老师提供的测试集，计算LSE-C，LSE-D评价指标。另外定性评价了论文的几项指标。
+数据集包括audio片段（wav文件）和对应的blendshape系数（npy文件）
 
-### 2.3 train
-将原仓库的推理模型修改为训练模型，复现论文训练功能。
+**我们在此次训练中只采用了RAVDESS数据集作为输入。**
 
-## 3. EmoTalk使用文档.docx
+3D-ETF数据集的下载链接： 
 
-详细讲解了如何运行文件以生成视频和评价指标
+<https://drive.google.com/file/d/1czXc0B_nxN6v2ASD8tpkw4W-QYkE21BG/view?usp=drive_link>
 
-1.  **Dockers镜像下载**
+## 2.训练设备及环境
 
-> 通过代码仓库或百度网盘下载docker镜像百度网盘https://pan.baidu.com/s/1ZO7TercF4GeucMflwcy9zw?pwd=jdkv
+训练设备为华为云中的实例，实例规格为：GPU(1\*Vnt1, 32GB), CPU(8核 64GB)，环境配置为pytorch_2.0.0-cuda_11.7-py_3.9.11-ubuntu_20.04-x86。由于HDTF数据集中每一个audio片段的时长较长（为一分多钟），直接使用占用的显存过大，我们采用了时长较短的RAVDESS数据集（一个片段时长3秒）。训练过程中，占用的显存约为20GB，一共耗时约12小时（每个epoch耗时约9分钟）。
 
-2.  **Docker镜像配置**
+## 3\. 训练过程及代码介绍
 
-> 下载后在终端加载docker镜像：
->
-> ```
-> docker load \< /path/to/EmoTalk.tar
-> ```
->
-> 加载完毕后，查看镜像是否已经导入：docker images
+（1）数据集处理
 
-3.  **运行EmoTalk.py**
+Emotalk类的forward输入和输出参数如图1所示，input12和input21是两个处理过的wav文件，target11和target12是对应的实际blendshape文件，level代表情绪水平，person代表个人风格。输出的bs_output11和bs_output12分别与target11和target12的维度相同，label1代表情绪分类。
 
-> ```
-> docker run --gpus all -v <input_path>:/app/videos -v <output_path>:/app/result -it emotalk bash
-> ```
->
-> 将输入视频和输出结果的路径挂载到容器上，注意一定要添加 \--gpus all
->
-> 在容器中执行 
->
-> ```
-> python EmoTalk.py \<path to video\>
-> ```
->
-> 运行成功，输出LSE-D和LESE-C
->
-> 输出文件保存在输出路径
+![](./image/media/image1.png){width="5.768055555555556in"
+height="3.2569444444444446in"}
 
-## 4. 组内评价.docx
+图1：Emotalk类forward的参数与输出
 
-省流：都拉满了
+因此，我们在构建EmotalkDataset类（继承DataSet类）时随机选取不重复的两个audio文件及对应的blendshape文件作为一对输入，audio文件的处理与demo.py文件中一致。\_getitem_函数返回如下图2，对应Emotalk类forward的输入。
 
+![](./image/media/image2.png){width="5.768055555555556in"
+height="2.8555555555555556in"}
+
+图2：EmotalkDataset类_getitem_函数返回值
+
+（2）checkpoint的保存与加载
+
+Checkpoint的组成包括epoch数量、模型参数、优化器参数和损失函数值。存储形式为pth文件，存储命名方式"emotalk_model"+epoch数+当前时间，总大小约为7.1GB（其中模型参数为大概2.4GB）。
+
+训练开始前，检查模型存储路径下是否已有checkpoint文件。如果存在，加载最新的checkpoint文件并显示epoch数与loss值。当一轮epoch训练完后，保存最新的checkpoint文件并删掉上一轮epoch下的checkpoint文件（否则训练时实例内存不够）。
+
+（3）前向传播与损失函数
+
+损失函数包括四个组成部分：交叉重构损失、自我重构损失、速度损失和分类损失，如图3所示。
+
+![](./image/media/image3.png){width="5.768055555555556in"
+height="1.3020833333333333in"}
+
+图3：损失函数
+
+交叉重构损失包括两个部分，如图4所示，$D\left( E_{c}\left( A_{c1,e2} \right),E_{e}\left( A_{c2,e1} \right) \right)$是一次forward后得到的结果。Emotalk类的predict函数输入值为audio,
+level和person，返回为bs_outpu11，$B_{c1,e1}$是$A_{c1,e2}$对应的正确blendshape系数，因此，我们认为在forward中，input12是$A_{c1,e2}$，input21是$A_{c2,e1}$,
+bs_output11是$D\left( E_{c}\left( A_{c1,e2} \right),E_{e}\left( A_{e2,e1} \right) \right)$。计算交叉重构损失需要两次forward，第二次将输入调换，都取返回的bs_output11与实际的blendshape系数求均方误差损失MSE。
+
+![](./image/media/image4.png){width="5.768055555555556in"
+height="1.632638888888889in"}
+
+图4：交叉重构损失
+
+自我重构损失如图5所示，计算过程需要进行另一次的forward，输入的input12和input21均为同一个audio片段，即$A_{c1,e2}$，返回的bs_output11与实际的blendshape系数$B_{c1,e2}$求MSE，由于文中并未给出$B_{c1,e1}$和$B_{c1,e2}$的区别，都对应$A_{c1,e2}$，我们在此取同一值。
+
+![](./image/media/image5.png){width="5.768055555555556in"
+height="0.9402777777777778in"}
+
+图5：自我重构损失
+
+速度损失如图6所示，按照定义，$\widehat{b_{t}}$属于预测出的blendshape，$b_{t}$属于实际的blendshape，两者分别减去前一项再求MSE。在这我们选取第一次forward过程中得到的bs_output11作为预测出的blendshape，原因如下：自我重构损失侧重于$A_{c1,e2}$，predict函数返回bs_output11，因此我们认为$A_{c1,e2}$比$A_{c2,e1}$更加重要，第一次forward的两个输入audio及blendshape不同，有更好的学习效果。实际的blendshape就是$A_{c1,e2}$对应的真实blendshape。
+
+![](./image/media/image6.png){width="5.768055555555556in"
+height="1.1708333333333334in"}
+
+图6：速度损失
+
+分类损失如图7所示，由于文章并未给出$y_{ic}$和$p_{ic}$的计算方式，Emotalk类forward所得到的level1维度与bs_output11,bs_output12完全不同，也没有任何说明（发邮件问作者，作者也没有回复），因此我们此次训练不采用分类损失。
+
+![](./image/media/image7.png){width="5.768055555555556in"
+height="1.7381944444444444in"}
+
+图7：分类损失
+
+forward输入的level和person在文中也没有具体说明，因此我们采用与demo.py中的参数一致，一次前向传播包括三个forward,取结果中的三个bs_ouput11来计算损失函数。
+
+（4）训练过程
+
+如图8所示，优化器采用Adam,学习率设置为1e --4，epoch数设置为80。由于每一个audio片段经处理后所得的tensor维度均不同，加载数据集时无法将多对输入压缩为同一个batch，我们的batchsize设置为1,即每次加载一对输入。
+
+![](./image/media/image8.png){width="5.768055555555556in"
+height="0.6277777777777778in"}
+
+图8：训练细节
+
+## 4.代码文件说明
+
+训练代码为model_train.ipynb和model_train.py,提取最终的checkpoint的模型参数代码为extract_model_state.ipynb和extract_model_state.py。
+
+## 5.改进建议
+
+-   如果能知道blendshape的构建流程并将HDTF数据集中的audio切割为更小的片段或者有设备支持，训练输入可以加入HDTF数据集
+
+-   将audio经处理后的tensor维度统一，可以提高batchsize的值以加快训练速度和提高训练效果（我们尝试过线性插值统一维度，但效果较差）。
+    
+-   理解分类损失的构建方式与forward输出的level1的作用，获得效果更好的损失函数。

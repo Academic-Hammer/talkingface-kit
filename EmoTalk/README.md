@@ -61,18 +61,27 @@ EmoTalk使用文档.docx        #3.3、封装后的可运行项目配置文档
 
 2.  **Docker镜像配置**
 
-> 下载后在终端加载docker镜像：docker load \< /path/to/EmoTalk.tar
+> 下载后在终端加载docker镜像：
+>
+> ```
+> docker load \< /path/to/EmoTalk.tar
+> ```
 >
 > 加载完毕后，查看镜像是否已经导入：docker images
 
 3.  **运行EmoTalk.py**
 
-> docker run \--gpus all -v \<input_path\> -v \<output_path\> -it
-> emotalk bash
+> ```
+> docker run --gpus all -v <input_path>:/app/videos -v <output_path>:/app/result -it emotalk bash
+> ```
 >
 > 将输入视频和输出结果的路径挂载到容器上，注意一定要添加 \--gpus all
 >
-> 在容器中执行 python EmoTalk.py \<path to video\>
+> 在容器中执行 
+>
+> ```
+> python EmoTalk.py \<path to video\>
+> ```
 >
 > 运行成功，输出LSE-D和LESE-C
 >
