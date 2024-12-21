@@ -1,6 +1,6 @@
 setup.py
-/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/bindings.cpp
-/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/shencoder.cu
+/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/bindings.cpp
+/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/shencoder.cu
 shencoder.egg-info/PKG-INFO
 shencoder.egg-info/SOURCES.txt
 shencoder.egg-info/dependency_links.txt

@@ -1,6 +1,6 @@
 setup.py
-/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/bindings.cpp
-/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/freqencoder.cu
+/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/bindings.cpp
+/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/freqencoder/src/freqencoder.cu
 freqencoder.egg-info/PKG-INFO
 freqencoder.egg-info/SOURCES.txt
 freqencoder.egg-info/dependency_links.txt

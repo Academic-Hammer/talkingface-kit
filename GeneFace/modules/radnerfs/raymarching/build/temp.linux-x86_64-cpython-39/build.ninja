@@ -2,9 +2,9 @@ ninja_required_version = 1.3
 cxx = c++
 nvcc = /usr/local/cuda/bin/nvcc
 
-cflags = -pthread -B /usr/local/envs/geneface/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /usr/local/envs/geneface/include -I/usr/local/envs/geneface/include -fPIC -O2 -isystem /usr/local/envs/geneface/include -fPIC -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include/TH -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/local/envs/geneface/include/python3.9 -c
+cflags = -pthread -B /output/GeneFace_Reproduction/conda/compiler_compat -Wno-unused-result -Wsign-compare -DNDEBUG -O2 -Wall -fPIC -O2 -isystem /output/GeneFace_Reproduction/conda/include -I/output/GeneFace_Reproduction/conda/include -fPIC -O2 -isystem /output/GeneFace_Reproduction/conda/include -fPIC -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include/TH -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include/THC -I/usr/local/cuda/include -I/output/GeneFace_Reproduction/conda/include/python3.9 -c
 post_cflags = -O3 -std=c++14 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=_raymarching_face -D_GLIBCXX_USE_CXX11_ABI=0
-cuda_cflags = -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include/TH -I/usr/local/envs/geneface/lib/python3.9/site-packages/torch/include/THC -I/usr/local/cuda/include -I/usr/local/envs/geneface/include/python3.9 -c
+cuda_cflags = -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include/torch/csrc/api/include -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include/TH -I/output/GeneFace_Reproduction/conda/lib/python3.9/site-packages/torch/include/THC -I/usr/local/cuda/include -I/output/GeneFace_Reproduction/conda/include/python3.9 -c
 cuda_post_cflags = -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ --expt-relaxed-constexpr --compiler-options ''"'"'-fPIC'"'"'' -O3 -std=c++14 -U__CUDA_NO_HALF_OPERATORS__ -U__CUDA_NO_HALF_CONVERSIONS__ -U__CUDA_NO_HALF2_OPERATORS__ -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=_raymarching_face -D_GLIBCXX_USE_CXX11_ABI=0
 ldflags = 
 
@@ -20,8 +20,8 @@ rule cuda_compile
 
 
 
-build /output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/bindings.o: compile /output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/bindings.cpp
-build /output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/raymarching.o: cuda_compile /output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/raymarching.cu
+build /output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/src/bindings.o: compile /output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/src/bindings.cpp
+build /output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/src/raymarching.o: cuda_compile /output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/src/raymarching.cu
 
 
 
