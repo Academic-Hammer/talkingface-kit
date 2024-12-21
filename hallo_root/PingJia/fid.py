@@ -37,6 +37,8 @@ from torch.nn.functional import adaptive_avg_pool2d
 
 from inception import InceptionV3
 
+import cv2
+
 
 def get_activations(images, model, batch_size=64, dims=2048,
                     cuda=False, verbose=False):
@@ -225,13 +227,29 @@ def calculate_fid_given_paths(path1, path2, batch_size, cuda, dims):
 
     return fid_value
 
+def img_scissors(img, origin_size, dest_size):  # 将img先裁剪为origin_size*origin_size，再resize为dest_size*dest_size
+    from skimage import io, transform
+    from skimage.util import img_as_ubyte
+
+    height, width = img.shape[:2]
+    center_y, center_x = height // 2, width // 2
+    crop_size = origin_size
+    half_crop = crop_size // 2
+    start_x = max(center_x - half_crop, 0)
+    start_y = max(center_y - half_crop, 0)
+    end_x = min(center_x + half_crop, width)
+    end_y = min(center_y + half_crop, height)
+    cropped_img = img[start_y:end_y, start_x:end_x]
+    resized_img = transform.resize(cropped_img, (dest_size, dest_size), anti_aliasing=True)
+    resized_img_ubyte = img_as_ubyte(resized_img)
+    return resized_img_ubyte
 
 if __name__ == '__main__':
 
     from skimage import io
 
-    clean = 'clean_patch/'
-    noisy = 'noisy_patch/'
+    clean = 'ImgsForFIDCalcu/Jae-in/origin'
+    noisy = 'ImgsForFIDCalcu/Jae-in/result'
 
     # parser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     parser = ArgumentParser()
@@ -258,3 +276,29 @@ if __name__ == '__main__':
                                           args.gpu != '',
                                           args.dims)
     print('FID: ', fid_value)
+    
+    # video_origin = cv2.VideoCapture("MP4/Jae-in.mp4")   # 在这里修改路径，改为想要计算NIQE的视频路径，video_origin即原视频
+    # video_result = cv2.VideoCapture("MP4/Jae-inRes.mp4")    # 在这里修改路径，改为想要计算NIQE的视频路径，video_result即hallo生成的视频
+    # save_path_origin = "ImgsForFIDCalcu/Jae-in/origin"    # 用于定性评估的帧图像保存的路径
+    # save_path_result = "ImgsForFIDCalcu/Jae-in/result"    
+    # index = 0
+    # if video_origin.isOpened() and video_result.isOpened():
+    #     rval_origin, frame_origin = video_origin.read()  # 读取视频帧
+    #     rval_result, frame_result = video_result.read()
+    # else:
+    #     rval_origin = False
+    #     rval_result = False
+
+    # while rval_origin and rval_result:
+    #     print(index)
+    #     rval_origin, frame_origin = video_origin.read()
+    #     img_origin = img_scissors(frame_origin, 720, 512)
+    #     rval_result, frame_result = video_result.read()
+    #     img_result = frame_result
+    #     if img_origin is None or img_result is None:
+    #         break
+    #     else:
+    #         cv2.imwrite(save_path_origin + "/" + str(index) + ".jpg", img_origin)
+    #         cv2.imwrite(save_path_result + "/" + str(index) + "Res.jpg", img_result)
+    #         index += 1
+            # break
