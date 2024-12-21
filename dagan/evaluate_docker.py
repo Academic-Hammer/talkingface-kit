@@ -69,8 +69,8 @@ class EvaluationDataset(Dataset):
             self.gt_dir = os.path.join(base_dir, 'gt_cross')
 
         # 打印使用的目录信息
-        print(f"Using source directory: {self.source_dir}")
-        print(f"Using GT directory: {self.gt_dir}")
+        print(f"源图像路径: {self.source_dir}")
+        print(f"驱动图像路径: {self.gt_dir}")
 
         # 检查目录是否存在
         if not os.path.exists(self.source_dir):
@@ -205,8 +205,8 @@ def evaluate_with_monitoring(evaluator, data_loader, device, output_path,
     for batch_idx, batch in pbar:
         try:
             # 添加调试输出
-            print(f"\nBatch {batch_idx} generate_dirs type: {type(batch['generate_dirs'])}")
-            print(f"generate_dirs content: {batch['generate_dirs']}")
+            # print(f"\nBatch {batch_idx} generate_dirs type: {type(batch['generate_dirs'])}")
+            # print(f"generate_dirs content: {batch['generate_dirs']}")
 
             source = batch['source'].to(device)
             driving = batch['driving'].to(device)
@@ -306,11 +306,11 @@ def save_final_results(metrics, output_path):
             return metric_value
 
     # 打印输入metrics的结构以便调试
-    print("\nInput metrics structure:")
-    for gen_dir, gen_metrics in metrics.items():
-        print(f"\nProcessing metrics for {gen_dir}:")
-        for metric_name, metric_values in gen_metrics.items():
-            print(f"{metric_name}: type={type(metric_values)}, value={metric_values}")
+    # print("\nInput metrics structure:")
+    # for gen_dir, gen_metrics in metrics.items():
+    #     print(f"\nProcessing metrics for {gen_dir}:")
+    #     for metric_name, metric_values in gen_metrics.items():
+    #         print(f"{metric_name}: type={type(metric_values)}, value={metric_values}")
 
     # 计算每个生成方法的平均指标
     results = {}
@@ -364,9 +364,9 @@ def save_final_results(metrics, output_path):
                     f.write(f"{metric}: {value:.6f}\n")
             f.write("\n")
 
-    print(f"\nResults saved to:")
-    print(f"- Full results: {results_file}")
-    print(f"- Summary: {summary_file}")
+    print(f"\n结果保存至:")
+    print(f"- 完整结果: {results_file}")
+    print(f"- 评估总结: {summary_file}")
 
     # 打印处理后的结果以便验证
     print("\nProcessed metrics:")
@@ -410,7 +410,7 @@ def main():
         if not generate_dirs:
             raise ValueError("No generate_* directories found in base directory")
 
-        print(f"Found generation directories: {generate_dirs}")
+        print(f"生成图像文件夹路径: {generate_dirs}")
 
         dataset = EvaluationDataset(
             base_dir=args.base_dir,
@@ -426,7 +426,7 @@ def main():
             pin_memory=False
         )
 
-        print("Starting evaluation...")
+        print("开始评估...")
         evaluator = EvaluationMetrics(device=args.device)
 
         with torch.no_grad():
@@ -440,7 +440,7 @@ def main():
             )
 
         save_final_results(metrics, args.output_path)
-        print(f"\nResults saved to {args.output_path}")
+        print(f"\n结果保存至： {args.output_path}")
 
     except Exception as e:
         print(f"\nError occurred: {str(e)}")
