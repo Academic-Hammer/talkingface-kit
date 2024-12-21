@@ -70,7 +70,7 @@ docker run --gpus all `
     -v ${PWD}/checkpoints:/app/checkpoints `
     dagan `
     --config config/vox-adv-256.yaml `
-    --driving_video /app/input_video/video.mp4 `
+    --driving_video /app/input_video/driving.mp4 `
     --source_image /app/input_image/src.png `
     --checkpoint /app/checkpoints/00000299-checkpoint.pth.tar `
     --relative `
@@ -115,7 +115,7 @@ docker run --gpus all `
 #### 构建&运行镜像(可选)
 
 ```bash
-docker build -f Dockerfile -t dagan .
+docker build -f Dockerfile.generate -t generate-image .
 ```
 
 如果直接下载生成图像的文件夹则**不用构建此镜像**，下载好的文件以原名放置到evaluation_set目录下。运行语句如下：
