@@ -54,11 +54,11 @@ bash download_model.sh
 
 [syncnet_v2.model](http://www.robots.ox.ac.uk/~vgg/software/lipsync/data/syncnet_v2.model)
 
-将`syncnet_v2.model`文件放到项目根目录下的`data`文件夹下
+将`syncnet_v2.model`文件放到项目根目录下的`data`文件夹下(可能需要创建)
 
 [sfd_face.pth](https://www.robots.ox.ac.uk/~vgg/software/lipsync/data/sfd_face.pth)
 
-将`sfd_face.pth`文件放到项目根目录下的`detectors/s3fd/weights`文件夹下
+将`sfd_face.pth`文件放到项目根目录下的`detectors/s3fd/weights`文件夹下(可能需要创建)
 
 ### 3. 运行评估
     
