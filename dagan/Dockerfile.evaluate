@@ -1,0 +1,54 @@
+FROM silverlogic/python3.8:latest
+
+# 设置环境变量
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
+ENV TORCH_HOME=/app/.torch
+
+# 使用清华源
+RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list && \
+    pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/ && \
+    pip config set install.trusted-host pypi.tuna.tsinghua.edu.cn
+
+# 设置工作目录
+WORKDIR /app
+
+# 安装评估所需的核心依赖
+RUN pip install torch==1.10.0+cu113 torchvision==0.11.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+
+# 安装评估必需的依赖包
+RUN pip install \
+    numpy==1.21.6 \
+    scipy==1.7.3 \
+    scikit-image==0.16.2 \
+    matplotlib==3.5.1 \
+    Pillow==9.1.0 \
+    tqdm==4.64.0 \
+    lpips==0.1.4 \
+    pyyaml==6.0.1 \
+    psutil==5.9.5 \
+    opencv-python-headless==4.5.5.64
+
+# 创建评估相关目录
+RUN mkdir -p /app/evaluation_set \
+    /app/evaluation_set/source_cross \
+    /app/evaluation_set/source_self \
+    /app/evaluation_set/gt_corss \
+    /app/evaluation_set/gt_self \
+    /app/evaluation_result
+
+# 复制评估所需的Python文件
+COPY evaluation_metrics.py /app/
+COPY evaluate_docker.py /app/
+COPY evaluation_dataset.py /app/
+COPY modules/ /app/modules/
+COPY sync_batchnorm/ /app/sync_batchnorm/
+COPY depth/ /app/depth/
+COPY evaluation_set/ /app/evaluation_set/
+
+# 设置工作目录
+WORKDIR /app
+
+# 设置默认命令
+ENTRYPOINT ["python", "evaluate_docker.py"]
+CMD ["--help"]

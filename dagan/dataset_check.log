@@ -1,0 +1,3 @@
+2024-12-08 10:39:48,082 - INFO - Checking dataset structure in root/autodl-tmp/vox-png
+2024-12-08 10:39:48,082 - ERROR - Missing required directory: root/autodl-tmp/vox-png/train
+2024-12-08 10:39:48,082 - ERROR - Dataset structure check failed!
