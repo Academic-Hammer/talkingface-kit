@@ -44,10 +44,11 @@ pip install -r requirements.txt
 
 需要下载预训练模型, 可以使用`download_model.sh`下载
 ```bash
-bash download_model.sh
+bash ./download_model.sh
 ```
 
 或者分别下载并放置到指定位置
+
 [shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 
 解压并将`shape_predictor_68_face_landmarks.dat`文件放置到项目根目录
