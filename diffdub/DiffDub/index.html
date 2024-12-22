@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    DiffDub Project Page
+  </title>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- icon -->
+  <script src="https://kit.fontawesome.com/87dc3e863a.js" crossorigin="anonymous"></script>
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background: rgb(255, 255, 255) no-repeat fixed top left;
+      font-family:'Open Sans', sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0" style="padding-bottom: 0px;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <!-- paper title -->
+            <h2 style="font-size:30px;">
+                DiffDub: Person-generic visual dubbing using inpainting renderer with diffusion auto-encoder
+            </h2>
+
+            <hr>
+            
+
+            <!-- authors -->
+            <h6><a href = "mailto:liutaw@sjtu.edu.cn">Tao Liu</a><sup>1</sup>,
+            <a href = "mailto:duchenpeng@sjtu.edu.cn">Chenpeng Du</a><sup>1</sup>,
+            <a href = "mailto:shuai.fan@aispeech.com">Shuai Fan</a><sup>2</sup>,
+            <a href = "mailto:feilong.chen@aispeech.com ">Feilong Chen</a><sup>2</sup>,
+            <a href = "mailto:kai.yu@sjtu.edu.cn">Kai Yu</a><sup>1</sup>,
+                 <br>
+                 <br>
+            <p> <sup>1</sup> MoE Key Lab of Artificial Intelligence, AI Institute, X-LANCE Lab, Shanghai Jiao Tong University <br>
+              <sup>2</sup> AISpeech Ltd, Suzhou China <br>
+            </p>
+            </h6>
+            <!-- links -->
+           <div class="row justify-content-center">
+              <!-- link to paper -->
+               <div style="margin: 5px;">
+                <p class="mb-5"><a class="btn btn-large btn-dark" href="https://arxiv.org/abs/2311.01811" role="button" target="_blank">
+                <i class="fa fa-file"></i>
+                  Paper
+                </a>
+                </p>
+              </div>
+              <!-- link to the code -->
+               <div style="margin: 5px;">
+                <p class="mb-5"><a class="btn btn-large btn-dark" href=" https://github.com/liutaocode/DiffDub" role="button" target="_blank">
+                <i class="fa fa-file"></i>
+                  Codes
+                </a>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+          <hr style="margin-top:0px">
+        </div>
+          <p class="text-justify">
+            Generating high-quality and person-generic visual dubbing remains a challenge. Recent innovation has seen the advent of a two-stage paradigm, decoupling the rendering and lip synchronization process facilitated by intermediate representation as a conduit. Still, previous methodologies rely on rough landmarks or are confined to a single speaker, thus limiting their performance. In this paper, we propose DiffDub: Diffusion-based dubbing. We first craft the Diffusion auto-encoder by an inpainting renderer incorporating a mask to delineate editable zones and unaltered regions. This allows for seamless filling of the lower-face region while preserving the remaining parts. Throughout our experiments, we encountered several challenges. Primarily, the semantic encoder lacks robustness, constricting its ability to capture high-level features. Besides, the modeling ignored facial positioning, causing mouth or nose jitters across frames. To tackle these issues, we employ versatile strategies, including data augmentation and supplementary eye guidance. Moreover, we encapsulated a conformer-based reference encoder and motion generator fortified by a cross-attention mechanism. This enables our model to learn person-specific textures with varying references and reduces reliance on paired audio-visual data. Our rigorous experiments comprehensively highlight that our ground-breaking approach outpaces existing methods with considerable margins and delivers seamless, intelligible videos in person-generic and multilingual scenarios.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+
+
+  <!-- demo -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Method Comparsion on HDTF Reconstrution</h3>
+          <hr style="margin-top:0px">
+        </div>
+        <div >
+
+        <div>
+            <table border="0"  style="text-align:center" width="100%">
+            <tr>
+            <td width="16.66%">Ground-truth</td>
+            <td width="16.66%">Wav2lip</td>
+            <td width="16.66%">PC-AVS</td>
+            <td width="16.66%">LP-LAP</td>
+            <td width="16.66%">DAE-Talker</td>
+            <td width="16.66%">Ours</td>
+            </tr>
+            </table>
+
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/reconstruction/RD_Radio8_000_25fps.mp4" type="video/mp4"> </video> Video 1 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/reconstruction/RD_Radio22_000_25fps.mp4" type="video/mp4"> </video> Video 2 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/reconstruction/RD_Radio42_000_25fps.mp4" type="video/mp4"> </video> Video 3 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/reconstruction/RD_Radio51_000_25fps.mp4" type="video/mp4"> </video> Video 4 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/reconstruction/WRA_PeterRoskam0_000_25fps.mp4" type="video/mp4"> </video> Video 5 </div>
+
+            <a href="https://drive.google.com/drive/folders/1YGsG05ezgySJm9Iw7XeiVb_3FQRZLXFX?usp=sharing" target="_blank">More Videos </a>
+        </div>
+          
+        </div>
+        
+
+          
+        </div>
+      </div>
+ <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Method Comparsion on One-shot Dubbing</h3>
+          <hr style="margin-top:0px">
+        </div>
+        <div >
+
+        <div>
+            <table border="0"  style="text-align:center" width="100%">
+            <tr>
+            <td width="16.66%">Portrait</td>
+            <td width="16.66%">Wav2lip</td>
+            <td width="16.66%">PC-AVS</td>
+            <td width="16.66%">LP-LAP</td>
+            <td width="16.66%">DAE-Talker</td>
+            <td width="16.66%">Ours</td>
+            </tr>
+            </table>
+
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/one_shot/RD_Radio5_000_25fps.mp4" type="video/mp4"> </video> Video 1 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/one_shot/RD_Radio11_000_25fps.mp4" type="video/mp4"> </video> Video 2 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/one_shot/RD_Radio17_000_25fps.mp4" type="video/mp4"> </video> Video 3 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/one_shot/RD_Radio25_000_25fps.mp4" type="video/mp4"> </video> Video 4 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/one_shot/RD_Radio29_000_25fps.mp4" type="video/mp4"> </video> Video 5 </div>
+
+          <a href="https://drive.google.com/drive/folders/1YGsG05ezgySJm9Iw7XeiVb_3FQRZLXFX?usp=sharing" target="_blank">More Videos </a>
+        </div>
+
+          
+        </div>
+        </div>
+
+          
+        </div>
+
+        <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Method Comparsion on Few-shot Dubbing</h3>
+          <hr style="margin-top:0px">
+        </div>
+        <div >
+
+        <div>
+            <table border="0"  style="text-align:center" width="100%">
+            <tr>
+            <td width="20%">Wav2lip</td>
+            <td width="20%">PC-AVS</td>
+            <td width="20%">LP-LAP</td>
+            <td width="20%">DAE-Talker</td>
+            <td width="20%">Ours</td>
+            </tr>
+            </table>
+
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/few_shot/test3_d6.mp4" type="video/mp4"> </video> Video 1 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/few_shot/test5_driving_audio_2.mp4" type="video/mp4"> </video> Video 2 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/few_shot/test6_driving_audio_5.mp4" type="video/mp4"> </video> Video 3 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/few_shot/test12_d8.mp4" type="video/mp4"> </video> Video 4 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/few_shot/test19_driving_audio_6.mp4" type="video/mp4"> </video> Video 5 </div>
+
+          <a href="https://drive.google.com/drive/folders/1YGsG05ezgySJm9Iw7XeiVb_3FQRZLXFX?usp=sharing" target="_blank">More Videos </a>
+        </div>
+
+          
+        </div>
+        </div>
+
+          
+        </div>
+
+         <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Ablation Study</h3>
+          <hr style="margin-top:0px">
+        </div>
+        <div >
+
+        <div>
+            <table border="0"  style="text-align:center" width="100%">
+            <tr>
+            <td width="16.66%">Ground-truth</td>
+            <td width="16.66%">w/o eye gudiance</td>
+            <td width="16.66%">w/o image aug.</td>
+            <td width="16.66%">w/o w.s.</td>
+            <td width="16.66%">10% paired data</td>
+            <td width="16.66%">Ours</td>
+            
+            </tr>
+            </table>
+
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/ablation_study/RD_Radio4_000_25fps.mp4" type="video/mp4"> </video> Video 1 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/ablation_study/RD_Radio8_000_25fps.mp4" type="video/mp4"> </video> Video 2 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/ablation_study/RD_Radio13_000_25fps.mp4" type="video/mp4"> </video> Video 3 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/ablation_study/RD_Radio18_000_25fps.mp4" type="video/mp4"> </video> Video 4 </div>
+          <div  style="text-align:center"> <video width="100%" controls> <source src="resources/ablation_study/RD_Radio21_000_25fps.mp4" type="video/mp4"> </video> Video 5 </div>
+             <a href="https://drive.google.com/drive/folders/1YGsG05ezgySJm9Iw7XeiVb_3FQRZLXFX?usp=sharing" target="_blank">More Videos </a>
+        </div>
+        <br>
+
+        <b>Statement</b>: The video sources on this page are from <a href="https://github.com/universome/HDTF">HDTF</a> and <a href="https://github.com/MRzzm/DINet">DINet</a>, and are solely intended for academic demonstration purposes without any other offensive intent.
+        </div>
+        </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+
+  <!-- citing -->
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+        <h3>Citation</h3>
+        <hr style="margin-top:0px">
+        <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
+<code>@inproceedings{liu2024diffdub,
+  title={DiffDub: Person-Generic Visual Dubbing Using Inpainting Renderer with Diffusion Auto-Encoder},
+  author={Liu, Tao and Du, Chenpeng and Fan, Shuai and Chen, Feilong and Yu, Kai},
+  booktitle={ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={3630--3634},
+  year={2024},
+  organization={IEEE}
+}</code></pre>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

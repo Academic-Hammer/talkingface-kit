@@ -1,0 +1,12 @@
+numpy==1.19.5
+torch==1.8.1
+opencv-python
+lpips
+dlib
+librosa
+scipy
+scikit-image
+transformers
+scenedetect==0.6.2
+opencv-contrib-python
+python_speech_features
