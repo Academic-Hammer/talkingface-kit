@@ -14,7 +14,7 @@
 
 2. **准备好 `.tar` 文件**：*请从网盘下载 Docker 镜像的 `.tar` 文件。*
 
-   ***我们镜像的网盘地址是*** 链接：https://pan.baidu.com/s/1YfrQ9PKGab6shMkAnmogCg?pwd=1234 提取码：1234
+   ***我们镜像的网盘地址是*** 链接：https://pan.baidu.com/s/1BsF1TC7S6PP0NNJeAwDUdA?pwd=1234 提取码：1234
 
 3. **准备好数据集文件**：我们的项目除了.mp4文件之外，还需要对应的.npy音频特征文件和.wav音频文件。
 

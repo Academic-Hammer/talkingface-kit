@@ -35,6 +35,16 @@
 
 现在可以通过dockerfile和entrypoint.sh来构建docker镜像
 
+需要下载3个缓存文件
+
+[torch-1.8.1+cu111-cp39-cp39-linux_x86_64.whl](https://download.pytorch.org/whl/cu111/torch-1.8.1%2Bcu111-cp39-cp39-linux_x86_64.whl)
+
+[resnet18-5c106cde.pth](https://download.pytorch.org/models/resnet18-5c106cde.pth)
+
+[pipnet_resnet18_10x68x32x256_300w.pth](https://github.com/DefTruth/torchlm/releases/download/torchlm-0.1.6-alpha//pipnet_resnet18_10x68x32x256_300w.pth)
+
+将3个文件放到项目根目录下，然后执行以下命令构建镜像
+
 ```bash
     docker build -t diffdub .
 ```
@@ -44,6 +54,7 @@
 将原先的取随机帧的方式改为取视频的第一帧
 
 ## 使用方法
+注意：我们更建议使用docker-images中的方式来复现我们的工作。
 
 #### 1. 按上文修改过的方式搭建conda环境
 #### 2. 下载模型权重文件
@@ -60,7 +71,7 @@
 
 #### 3. 获取音频hubert特征文件
 
-作者提供了另一个项目提取hubert特征, 仓库地址为([hubert](https://github.com/liutaocode/talking_face_preprocessing?tab=readme-ov-file#audio-feature-extraction)), 这里就不再赘述, 请自行查看
+作者提供了另一个项目提取hubert特征, 仓库地址为([hubert](https://github.com/liutaocode/talking_face_preprocessing?tab=readme-ov-file#audio-feature-extraction)), 这里就不再赘述, 请自行查看, 为了方便使用者，我们已经把提取出的特征文件放在网盘中，请参见/docker-images/README.md中的链接。
 
 #### 4. 运行demo.py
 
