@@ -6,12 +6,6 @@
 链接: https://pan.baidu.com/s/1EkeNTIqZ5QIZwLBmYHSGVA?pwd=fiuu 提取码: fiuu 
 --来自百度网盘超级会员v5的分享
 
-### 训练代码讲解视频：
-
-通过百度网盘分享的文件：Emotalk训练代码解释视频.mp4
-链接：https://pan.baidu.com/s/1Jujn-PDhUfhRrqJB2xDCCQ?pwd=lqfs 
-提取码：lqfs
-
 ### 邮件记录&氪金记录：
 
 数据集申请
