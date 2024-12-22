@@ -1,3 +1,21 @@
+# 语音识别大作业 video-retalking
+项目链接 https://github.com/OpenTalker/video-retalking
+# 小组成员
+
+贾石浩， 张卓玉，刘璟琦，陈梓镕
+#  0 文件说明
+
+`./video-retalking`：目录下包含全部项目源代码（模型需自行下载），手动运行项目请参照该目录下的PAPER_README .md
+
+`./evalute`：目录下包含评估代码
+
+`./evalute/定性评估`：目录下包含定性评估结果
+
+`./evalute/定量评估`：目录下包含定量评估相关代码
+
+`./README.md`：Docker 配置运行文档
+
+`./video-retalking实验报告.txt`：按照北理学报格式
 # 1 组内分工及组内评价
 
 ## 1.1组长对组员贡献评价
