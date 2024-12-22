@@ -294,7 +294,7 @@ if __name__ == "__main__":
     parser.add_argument('--mp4_original_path', type=str, default='./assets/samples/RD_Radio51_000_25fps/RD_Radio51_000_25fps.mp4', help='Path to the original MP4 file(to be driven)')
     parser.add_argument('--denoising_step', type=int, default=20, help='Number of denoising steps')
     parser.add_argument('--device', type=str, default="cuda:0", help='Device to use for computation')
-    parser.add_argument('--saved_name', type=str, default="predition.mp4", help='Name of the generated video (must include mp4 extension)')
+    parser.add_argument('--saved_name', type=str, default="prediction.mp4", help='Name of the generated video (must include mp4 extension)')
     parser.add_argument('--reference_image_path', type=str, default="./assets/single_images/test001.png", help='When in one-shot mode, a fixed frame can be set as the object to be modified')
     args = parser.parse_args()
 
