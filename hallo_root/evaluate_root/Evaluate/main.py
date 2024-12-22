@@ -62,11 +62,14 @@ def calculate_LSE(videofile, reference, data_dir):
 
 if __name__ == "__main__":
     print("The video for demonstration is Jae-in.mp4")
+    
+    example_video_name = 'Jae-in.mp4'
+    
     example_source_video_path = '../MP4/Source'
     example_hallo_video_path = '../MP4/Hallo'
 
-    example_source_video = cv2.VideoCapture(example_source_video_path + "/Jae-in.mp4")
-    example_hallo_video = cv2.VideoCapture(example_hallo_video_path + "/Jae-in.mp4")
+    example_source_video = cv2.VideoCapture(example_source_video_path + "/" + example_video_name)
+    example_hallo_video = cv2.VideoCapture(example_hallo_video_path + "/" + example_video_name)
 
     example_FID_source_img_path = '../ImgsForFIDCalcu/source'
     example_FID_hallo_img_path = '../ImgsForFIDCalcu/hallo'
@@ -118,13 +121,13 @@ if __name__ == "__main__":
 
     FID = calculate_FID(example_FID_source_img_path, example_FID_hallo_img_path)
     
-    run_pipeline("../" + example_source_video_path + "/Jae-in.mp4", "wav2lip", "tmp_dir")    
-    scores_source = calculate_LSE("../" + example_source_video_path + "/Jae-in.mp4", "wav2lip", "tmp_dir")
+    run_pipeline("../" + example_source_video_path + "/" + example_video_name, "wav2lip", "tmp_dir")    
+    scores_source = calculate_LSE("../" + example_source_video_path + "/" + example_video_name, "wav2lip", "tmp_dir")
     LSE_D_source = scores_source[0]
     LSE_C_source = scores_source[1]
     
-    run_pipeline("../" + example_hallo_video_path + "/Jae-in.mp4", "wav2lip", "tmp_dir")    
-    scores_hallo = calculate_LSE("../" + example_hallo_video_path + "/Jae-in.mp4", "wav2lip", "tmp_dir")
+    run_pipeline("../" + example_hallo_video_path + "/" + example_video_name, "wav2lip", "tmp_dir")    
+    scores_hallo = calculate_LSE("../" + example_hallo_video_path + "/" + example_video_name, "wav2lip", "tmp_dir")
     LSE_D_hallo = scores_hallo[0]
     LSE_C_hallo = scores_hallo[1]
     
