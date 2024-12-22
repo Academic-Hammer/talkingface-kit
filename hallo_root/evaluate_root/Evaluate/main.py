@@ -1,4 +1,4 @@
-import niqe, psnr_ssim, fid
+import niqe, psnr_ssim, fid, lmd
 import cv2
 from skimage import io
 from argparse import ArgumentParser
@@ -61,9 +61,8 @@ def calculate_LSE(videofile, reference, data_dir):
 
 
 if __name__ == "__main__":
-    print("The video for demonstration is Jae-in.mp4")
-    
-    example_video_name = 'Jae-in.mp4'
+    example_video_name = 'Shaheen.mp4'
+    print("The video for demonstration is " + example_video_name)
     
     example_source_video_path = '../MP4/Source'
     example_hallo_video_path = '../MP4/Hallo'
@@ -131,9 +130,12 @@ if __name__ == "__main__":
     LSE_D_hallo = scores_hallo[0]
     LSE_C_hallo = scores_hallo[1]
     
+    LMD = lmd.compute_lmd(example_source_video_path + "/" + example_video_name, example_hallo_video_path + "/" + example_video_name)
+    
     print("source NIQE: " + str(niqe_source) + ", hallo NIQE: " + str(niqe_hallo))
     print("PSNR: " + str(PSNR))
     print("SSIM: " + str(SSIM))
     print("FID: " + str(FID))
     print("source LSE_C: " + str(LSE_C_source) + ", hallo LSE_C: " + str(LSE_C_hallo))
     print("source LSE_D: " + str(LSE_D_source) + ", hallo LSE_D: " + str(LSE_D_hallo))
+    print("LMD: " + str(LMD))

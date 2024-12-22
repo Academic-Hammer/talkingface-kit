@@ -7,6 +7,9 @@ WORKDIR /app
 # 复制当前目录下的所有文件到容器中的工作目录
 COPY . /app/
 
+RUN apt-get update
+RUN apt-get install build-essential cmake libboost-all-dev
+
 # 安装必需的编译工具和依赖
 RUN apt-get update && apt-get install -y \
     build-essential \
