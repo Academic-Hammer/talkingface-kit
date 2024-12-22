@@ -42,26 +42,23 @@ pip install -r requirements.txt
 
 ### 2. 下载预训练模型
 
-需要下载预训练模型, 下载命令如下
-
+需要下载预训练模型, 可以使用`download_model.sh`下载
 ```bash
-wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2 -O shape_predictor_68_face_landmarks.dat.bz2
-bunzip2 shape_predictor_68_face_landmarks.dat.bz2
+bash download_model.sh
 ```
-项目根目录下会出现`shape_predictor_68_face_landmarks.dat`文件
 
-```bash
-mkdir data
-wget http://www.robots.ox.ac.uk/~vgg/software/lipsync/data/syncnet_v2.model -O data/syncnet_v2.model
-```
-项目根目录下的`data`文件夹下会出现`syncnet_v2.model`文件
+或者分别下载并放置到指定位置
+[shape_predictor_68_face_landmarks.dat.bz2](http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2)
 
-```bash
-mkdir detectors/s3fd/weights
-wget https://www.robots.ox.ac.uk/~vgg/software/lipsync/data/sfd_face.pth -O detectors/s3fd/weights/sfd_face.pth
-```
-项目根目录下的`detectors/s3fd/weights`文件夹下会出现`sfd_face.pth`文件
+解压并将`shape_predictor_68_face_landmarks.dat`文件放置到项目根目录
 
+[syncnet_v2.model](http://www.robots.ox.ac.uk/~vgg/software/lipsync/data/syncnet_v2.model)
+
+将`syncnet_v2.model`文件放到项目根目录下的`data`文件夹下
+
+[sfd_face.pth](https://www.robots.ox.ac.uk/~vgg/software/lipsync/data/sfd_face.pth)
+
+将`sfd_face.pth`文件放到项目根目录下的`detectors/s3fd/weights`文件夹下
 
 ### 3. 运行评估
     

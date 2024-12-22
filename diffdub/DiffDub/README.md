@@ -62,7 +62,7 @@
 项目作者提供了一个脚本来下载模型权重文件, 下载命令如下
 
 ```bash
-    ./auto_download_ckpt.sh
+    bash ./auto_download_ckpt.sh
 ```
 
 或者访问huggingface的仓库手动下载([仓库地址](https://huggingface.co/taocode/diffdub))并放到assets文件夹下, 假设项目目录为`/path/to/diffdub`, 则权重文件应该放到`/path/to/diffdub/assets/checkpoints`下
