@@ -1,0 +1,3 @@
+# ninja log v5
+0	17466	1734802574189319983	/home/pod/shared-nvme/SyncTalk/shencoder/build/temp.linux-x86_64-cpython-38/home/pod/shared-nvme/SyncTalk/shencoder/src/bindings.o	496bcba7e7124a5
+1	41072	1734802597809231109	/home/pod/shared-nvme/SyncTalk/shencoder/build/temp.linux-x86_64-cpython-38/home/pod/shared-nvme/SyncTalk/shencoder/src/shencoder.o	308a8b8f93e1cc2c
