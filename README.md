@@ -87,6 +87,10 @@ docker run --gpus all `
 - checkpoints：可选checkpoints文件夹下使用哪个checkpoint(需要下载)
 - output_dir：生成视频输出路径
 
+#### 可能的错误
+
+如果输入视频过长或者size不是256 x 256可能会出现中断的情况，但是在云服务器中是可以实现的。
+
 ### 2. 生成测试数据集
 
 #### 数据集下载
