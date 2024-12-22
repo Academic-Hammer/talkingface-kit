@@ -24,4 +24,3 @@ bash docs/prepare_env/install_ext.sh
 ```
 
 > 注：可能需要修改本地命令行配置以使用正确的本地conda环境
-
