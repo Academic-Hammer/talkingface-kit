@@ -32,17 +32,16 @@ docker build -t evaluate_image .
 ```
 vim /etc/apt/sources.list
 
-# deb https://mirrors.163.com/debian/ bookworm main non-free contrib
-# deb-src https://mirrors.163.com/debian/ bookworm main non-free contrib
-# 在sources.list的末尾添加以上两行
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# 在sources.list的末尾添加以上四行，用于更改apt镜像源
 ```
+构建过程大约需要20min
+![alt text](dockerbuild.png)
 
-### 2、新建用于挂载整个项目的文件夹
-```
-mkdir /home/user/hallo_project_from_image
-# user即自己的用户名
-```
-### 3、启动镜像
+### 2、启动镜像
 ```
 docker run -it \
  evaluate_image \
