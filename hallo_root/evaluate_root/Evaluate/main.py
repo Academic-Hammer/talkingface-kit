@@ -30,7 +30,7 @@ def run_pipeline(videofile, reference, data_dir):
     # python run_pipeline.py --videofile /path/to/your/video --reference wav2lip --data_dir tmp_dir
     target_dir = "syncnet_python"
     command = [
-        "python", "run_pipeline.py", 
+        "python3", "run_pipeline.py", 
         "--videofile", videofile, 
         "--reference", reference, 
         "--data_dir", data_dir
@@ -45,7 +45,7 @@ def calculate_LSE(videofile, reference, data_dir):
     # python calculate_scores_real_videos.py --videofile /path/to/you/video --reference wav2lip --data_dir tmp_dir >> all_scores.txt
     target_dir = "syncnet_python"
     command = [
-        "python", "calculate_scores_real_videos.py", 
+        "python3", "calculate_scores_real_videos.py", 
         "--videofile", videofile, 
         "--reference", reference, 
         "--data_dir", data_dir,
@@ -89,6 +89,8 @@ if __name__ == "__main__":
         rval_hallo = False
 
     while rval_source and rval_hallo:
+        if index == 30:
+            break
         # 对视频的每一帧进行处理
         rval_source, frame_source = example_source_video.read()
         img_source = niqe.img_scissors(frame_source, 720, 512)  # 对源视频的帧图像进行尺寸统一处理
