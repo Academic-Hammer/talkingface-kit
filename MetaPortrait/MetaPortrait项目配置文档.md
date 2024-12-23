@@ -2,6 +2,8 @@
 
 ## 下载Resources文件夹到项目根目录里，里面有7个文件，假设项目根目录是MetaPortrait
 
+https://drive.google.com/drive/folders/1f_SXHhLVVsPXiIQstnJDAQYbeZ-26p2K?usp=sharing
+
 ### 在项目根目录下执行`python init.py`，会自动将下面文件复制到正确路径
 
 ckpt_base.pth.tar文件复制路径：MetaPortrait/base_model/checkpoint/
