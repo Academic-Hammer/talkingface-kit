@@ -1,0 +1,1 @@
+python -m pytorch_fid imgs base_resize_data/Jae-in
