@@ -1,0 +1,19 @@
+# Python 缓存文件
+*.pyc
+*.pyo
+__pycache__/
+
+# 虚拟环境目录
+venv/
+env/
+
+# 本地开发工具
+.idea/
+.vscode/
+
+# 测试相关
+tests/
+*.pytest_cache/
+
+# 敏感文件
+*.env
