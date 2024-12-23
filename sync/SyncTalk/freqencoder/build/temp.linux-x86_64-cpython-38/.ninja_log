@@ -1,0 +1,3 @@
+# ninja log v5
+0	26782	1734802515297543445	/home/pod/shared-nvme/SyncTalk/freqencoder/build/temp.linux-x86_64-cpython-38/home/pod/shared-nvme/SyncTalk/freqencoder/src/bindings.o	44f86bd32c0d33f9
+1	50546	1734802539069452910	/home/pod/shared-nvme/SyncTalk/freqencoder/build/temp.linux-x86_64-cpython-38/home/pod/shared-nvme/SyncTalk/freqencoder/src/freqencoder.o	5409e7e776086ceb
