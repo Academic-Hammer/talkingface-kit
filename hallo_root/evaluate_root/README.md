@@ -79,7 +79,11 @@ docker run -it \
 + bash：
 启动容器后会进入 bash 控制台
 #### 使用命令
-先获取计算所需要的模型
+进入控制台后即可运行main.py来计算 示例视频的 NIQE，PSNR，FID，SSIM，LSE-C，LSE-D。
+```
+python3 main.py
+```
+若报错显示无syncnet_v2.model和sfd_face.pth，则回退至上一级目录，执行以下命令
 ```
 cd Evaluate/syncnet_python
 mkdir data
@@ -91,10 +95,6 @@ mkdir weights
 cd weights
 wget https://www.robots.ox.ac.uk/~vgg/software/lipsync/data/sfd_face.pth
 
-```
-进入控制台后即可运行main.py来计算 示例视频的 NIQE，PSNR，FID，SSIM，LSE-C，LSE-D。
-```
-python3 main.py
 ```
 #### 修改参数，计算其他视频
 ```

@@ -89,8 +89,6 @@ if __name__ == "__main__":
         rval_hallo = False
 
     while rval_source and rval_hallo:
-        if index == 30:
-            break
         # 对视频的每一帧进行处理
         rval_source, frame_source = example_source_video.read()
         img_source = niqe.img_scissors(frame_source, 720, 512)  # 对源视频的帧图像进行尺寸统一处理
