@@ -8,7 +8,7 @@
 
 `./source`：目录下包含全部源代码
 
-`./data`：目录下包含测试用的音视频以及预训练模型
+`./data`：目录下包含 **部分** 测试用的音视频以及预训练模型
 
 `README.md`：Docker 镜像说明文档
 
@@ -18,11 +18,15 @@
 
 本项目的模型使用 `Docker 27.3` 版本封装了模型，使用前请确保已正确安装 `Docker Engine 27.3` 。您可以通过访问 [Docker 官网](https://www.docker.com/) 下载并安装 Docker。
 
+论文配套代码使用 `pytorch-1.7.10+cu110` 环境，我们基于此版本进行了复现，Docker镜像可从此处下载：[lsp_demo_1.3.tar](https://pan.baidu.com/s/1NIJDdSzwFL3lPSb-tYuaZQ?pwd=fnbg) 。
+
+由于使用的 `cuda` 版本较老，最新的RTX40系显卡无法进行训练。因此，面向高版本重新封装了基于 `cuda 11.8` 的Docker镜像。由于原文代码存在兼容性问题，因此我们替换了不兼容的模块，并改写了部分代码。该Docker镜像可从此处下载：[lsp_quickrun_cu118.tar](https://pan.baidu.com/s/1a1C2oy5DBqbVjWnXOOr9rw?pwd=imjb) 。
+
 ### 文件准备
 
 #### 1. 从.tar文件载入 Docker 镜像
 
-首先，下载本项目的镜像文件，可以从以下链接下载镜像文件：[lsp_demo_1.3.tar](https://pan.baidu.com/s/1NIJDdSzwFL3lPSb-tYuaZQ?pwd=fnbg) 。
+首先，参考上方链接，下载与您的 GPU 兼容的 Docker 镜像文件。
 
 使用以下命令载入 Docker 镜像：
 
