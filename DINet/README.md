@@ -4,6 +4,9 @@
 
 
 这是2024年语音识别课程大作业的仓库，用于[DINet](https://github.com/MRzzm/DINet)的复现
+# 复现注意事项
+首先这里知识对于原项目进行了复述，因此具体操作参考配置文档.txt文件进行使用。
+
 ## 数据获取
 ##### 在 [Google drive](https://drive.google.com/drive/folders/1rPtOo9Uuhc59YfFVv4gBmkh0_oG0nCQb?usp=share_link)中下载资源 （asserts.zip）。解压缩并将 dir 放入 ./ 中
 +  使用示例视频进行推理。运行 
@@ -81,6 +84,22 @@ python train_DINet_frame.py --augment_num=20 --mouth_region_size=256 --batch_siz
    ```python 
 python train_DINet_clip.py --augment_num=3 --mouth_region_size=256 --batch_size=3 --pretrained_syncnet_path=./asserts/syncnet_256mouth.pth --pretrained_frame_DINet_path=./asserts/training_model_weight/frame_training_256/xxxxx.pth --result_path=./asserts/training_model_weight/clip_training_256
 ```
+
+
+# 改进推理和评估
+1.上述推理过程中过于繁琐不便于我们进行测试集的推理和评估，因此这里对于该部分进行了修改，通过一个统一的脚本进行推理，我们只需要将测试集放到test_data文件夹下面我们就可以很方便的进行推理：
+```
+docker run --rm -v  path/to/your/DINet:/app --gpus all -it  --shm-size=8G -e CUDA_LAUNCH_BLOCKING=1 kevia/dinet:latest run_inference.py  --process_num x
+```
+process_num 遍历推理个数，结果保存在./asserts/inference_result里面
+	推理阶段默认使用预训练模型，如果使用训练模型加入参数 --model_path  ./asserts/training_model_weight/clip_training_256/xxxx.pth
+	可以选择音频路径 --audio_path /path/to/your_auido
+
+2.由于该项目并没有评估脚本来对于模型进行评估，因此这里加入了专用的评估脚本，实现了NIQE，PSNR，FID，SSIM，LSE-C，LSE-D指标，通过运行
+```
+docker run --rm -v  path/to/your/DINet:/app --gpus all -it  --shm-size=8G -e CUDA_LAUNCH_BLOCKING=1 kevia/dinet:latest run_evaluate.py
+```
+评估结果保存在./asserts/evaluate_result里面。
 
 ## 声明
 整体实现思路来自[https://github.com/MRzzm/DINet](https://github.com/MRzzm/DINet)
