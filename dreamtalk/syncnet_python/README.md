@@ -57,7 +57,7 @@
     python demo_syncnet.py --videofile data/example.avi --tmp_dir /path/to/temp/directory
 ```
 
-### 进行评估
+#### 进行评估
 
 使用 [Wav2Lip](https://github.com/Rudrabha/Wav2Lip/tree/master/evaluation) 的评估脚本，按照说明将 `Wav2Lip/evaluation/scores_LSE/` 下的脚本放入 `/syncnet_python/` 目录下 ( 直接下载传入最好，懒得再克隆一个项目 )
 
@@ -123,7 +123,7 @@
 
 ### 定量评估结果 ( PSNR & SSIM )
 
-在 /eval/ 中进行评估，环境比较简单就直接放在外面了
+在 /eval/ 中进行评估，环境比较简单，结果放在这里了
 
 使用 `eval.py`: 进行视频定量评估 `PSNR & SSIM`
 
