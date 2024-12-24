@@ -1,133 +1,122 @@
-# **Wav2Lip**: *Accurately Lip-syncing Videos In The Wild* 
-### Wav2Lip is hosted for free at [sync.](https://sync.so/)
-Are you looking to integrate this into a product? We have a turn-key hosted API with new and improved lip-syncing models here: https://sync.so/
-For any other commercial / enterprise requests, please contact us at pavan@sync.so and prady@sync.so
-To reach out to the authors directly you can reach us at prajwal@sync.so, rudrabha@sync.so.
-This code is part of the paper: _A Lip Sync Expert Is All You Need for Speech to Lip Generation In the Wild_ published at ACM Multimedia 2020. 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-lip-sync-expert-is-all-you-need-for-speech/lip-sync-on-lrs2)](https://paperswithcode.com/sota/lip-sync-on-lrs2?p=a-lip-sync-expert-is-all-you-need-for-speech)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-lip-sync-expert-is-all-you-need-for-speech/lip-sync-on-lrs3)](https://paperswithcode.com/sota/lip-sync-on-lrs3?p=a-lip-sync-expert-is-all-you-need-for-speech)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-lip-sync-expert-is-all-you-need-for-speech/lip-sync-on-lrw)](https://paperswithcode.com/sota/lip-sync-on-lrw?p=a-lip-sync-expert-is-all-you-need-for-speech)
-|📑 Original Paper|📰 Project Page|🌀 Demo|⚡ Live Testing|📔 Colab Notebook
-|:-:|:-:|:-:|:-:|:-:|
-[Paper](http://arxiv.org/abs/2008.10010) | [Project Page](http://cvit.iiit.ac.in/research/projects/cvit-projects/a-lip-sync-expert-is-all-you-need-for-speech-to-lip-generation-in-the-wild/) | [Demo Video](https://youtu.be/0fXaDCZNOJc) | [Interactive Demo](https://synclabs.so/) | [Colab Notebook](https://colab.research.google.com/drive/1tZpDWXz49W6wDcTprANRGLo2D_EbD5J8?usp=sharing) /[Updated Collab Notebook](https://colab.research.google.com/drive/1IjFW1cLevs6Ouyu4Yht4mnR4yeuMqO7Y#scrollTo=MH1m608OymLH)
- 
-![Logo](https://drive.google.com/uc?export=view&id=1Wn0hPmpo4GRbCIJR8Tf20Akzdi1qjjG9)
-----------
-**Highlights**
-----------
- - Weights of the visual quality disc has been updated in readme!
- - Lip-sync videos to any target speech with high accuracy :100:. Try our [interactive demo](https://synclabs.so/).
- - :sparkles: Works for any identity, voice, and language. Also works for CGI faces and synthetic voices.
- - Complete training code, inference code, and pretrained models are available :boom:
- - Or, quick-start with the Google Colab Notebook: [Link](https://colab.research.google.com/drive/1tZpDWXz49W6wDcTprANRGLo2D_EbD5J8?usp=sharing). Checkpoints and samples are available in a Google Drive [folder](https://drive.google.com/drive/folders/1I-0dNLfFOSFwrfqjNa-SXuwaURHE5K4k?usp=sharing) as well. There is also a [tutorial video](https://www.youtube.com/watch?v=Ic0TBhfuOrA) on this, courtesy of [What Make Art](https://www.youtube.com/channel/UCmGXH-jy0o2CuhqtpxbaQgA). Also, thanks to [Eyal Gruss](https://eyalgruss.com), there is a more accessible [Google Colab notebook](https://j.mp/wav2lip) with more useful features. A tutorial collab notebook is present at this [link](https://colab.research.google.com/drive/1IjFW1cLevs6Ouyu4Yht4mnR4yeuMqO7Y#scrollTo=MH1m608OymLH).  
- - :fire: :fire: Several new, reliable evaluation benchmarks and metrics [[`evaluation/` folder of this repo]](https://github.com/Rudrabha/Wav2Lip/tree/master/evaluation) released. Instructions to calculate the metrics reported in the paper are also present.
---------
-**Disclaimer**
---------
-All results from this open-source code or our [demo website](https://bhaasha.iiit.ac.in/lipsync) should only be used for research/academic/personal purposes only. As the models are trained on the <a href="http://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html">LRS2 dataset</a>, any form of commercial use is strictly prohibited. For commercial requests please contact us directly!
-Prerequisites
--------------
-- `Python 3.6` 
-- ffmpeg: `sudo apt-get install ffmpeg`
-- Install necessary packages using `pip install -r requirements.txt`. Alternatively, instructions for using a docker image is provided [here](https://gist.github.com/xenogenesi/e62d3d13dadbc164124c830e9c453668). Have a look at [this comment](https://github.com/Rudrabha/Wav2Lip/issues/131#issuecomment-725478562) and comment on [the gist](https://gist.github.com/xenogenesi/e62d3d13dadbc164124c830e9c453668) if you encounter any issues. 
-- Face detection [pre-trained model](https://www.adrianbulat.com/downloads/python-fan/s3fd-619a316812.pth) should be downloaded to `face_detection/detection/sfd/s3fd.pth`. Alternative [link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/prajwal_k_research_iiit_ac_in/EZsy6qWuivtDnANIG73iHjIBjMSoojcIV0NULXV-yiuiIg?e=qTasa8) if the above does not work.
-Getting the weights
-----------
-| Model  | Description |  Link to the model | 
-| :-------------: | :---------------: | :---------------: |
-| Wav2Lip  | Highly accurate lip-sync | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/Eb3LEzbfuKlJiR600lQWRxgBIY27JZg80f7V9jtMfbNDaQ?e=TBFBVW)  |
-| Wav2Lip + GAN  | Slightly inferior lip-sync, but better visual quality | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EdjI7bZlgApMqsVoEUUXpLsBxqXbn5z8VTmoxp55YNDcIA?e=n9ljGW) |
-| Expert Discriminator  | Weights of the expert discriminator | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EQRvmiZg-HRAjvI6zqN9eTEBP74KefynCwPWVmF57l-AYA?e=ZRPHKP) |
-| Visual Quality Discriminator  | Weights of the visual disc trained in a GAN setup | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EQVqH88dTm1HjlK11eNba5gBbn15WMS0B0EZbDBttqrqkg?e=ic0ljo) |
-Lip-syncing videos using the pre-trained models (Inference)
--------
-You can lip-sync any video to any audio:
+# 项目名称
+Wav2lip-master
+## 1. 项目简介
+这个项目是基于Wav2lip-master项目（https://github.com/Rudrabha/Wav2lip/)的复现项目，在原项目的基础上通过更加简单的操作来实现从生成视频到评测完毕这一流程。
+
+## 2. 系统要求
+- 操作系统：Windows / Linux
+- Python 版本：3.8
+
+## 3. 环境配置
+
+### 3.1 安装 Python
+请确保系统上安装了 Python 3.8。可以从 [Python 官网](https://www.python.org/downloads/) 下载并安装。
+
+### 3.2 创建虚拟环境
+建议使用虚拟环境来管理项目依赖。使用conda创建虚拟环境。
+
 ```bash
-python inference.py --checkpoint_path <ckpt> --face <video.mp4> --audio <an-audio-source> 
+# 使用 conda
+conda create --name myenv python=3.8
+conda activate myenv
 ```
-The result is saved (by default) in `results/result_voice.mp4`. You can specify it as an argument,  similar to several other available options. The audio source can be any file supported by `FFMPEG` containing audio data: `*.wav`, `*.mp3` or even a video file, from which the code will automatically extract the audio.
-##### Tips for better results:
-- Experiment with the `--pads` argument to adjust the detected face bounding box. Often leads to improved results. You might need to increase the bottom padding to include the chin region. E.g. `--pads 0 20 0 0`.
-- If you see the mouth position dislocated or some weird artifacts such as two mouths, then it can be because of over-smoothing the face detections. Use the `--nosmooth` argument and give it another try. 
-- Experiment with the `--resize_factor` argument, to get a lower-resolution video. Why? The models are trained on faces that were at a lower resolution. You might get better, visually pleasing results for 720p videos than for 1080p videos (in many cases, the latter works well too). 
-- The Wav2Lip model without GAN usually needs more experimenting with the above two to get the most ideal results, and sometimes, can give you a better result as well.
-Preparing LRS2 for training
-----------
-Our models are trained on LRS2. See [here](#training-on-datasets-other-than-lrs2) for a few suggestions regarding training on other datasets.
-##### LRS2 dataset folder structure
+在Windows下如果要使用gpu运行，请输入命令：
+```BASH
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
-data_root (mvlrs_v1)
-├── main, pretrain (we use only main folder in this work)
-|	├── list of folders
-|	│   ├── five-digit numbered video IDs ending with (.mp4)
+### 3.3 安装依赖
+在项目根目录下，使用 pip 或 conda 安装项目所需的依赖。
+```BASH
+# 使用 pip 安装
+pip install -r requirements.txt
 ```
-Place the LRS2 filelists (train, val, test) `.txt` files in the `filelists/` folder.
-##### Preprocess the dataset for fast training
+### 3.4 docker镜像安装
+我已经将运行此项目docker打包并上传至该网址，读者可以自行下载使用：
+```BASH
+https://share.weiyun.com/sI9Hlbbb
+```
 ```bash
-python preprocess.py --data_root data_root/main --preprocessed_root lrs2_preprocessed/
+docker run ... --shm-size=3g --gpus all  --name=xxxx -t -d name
+#docker运行
+docker exec -it yuyinshibie /bin/bash
+#进入docker
+conda activate xuni
+#进入进行工作的虚拟环境
 ```
-Additional options like `batch_size` and the number of GPUs to use in parallel to use can also be set.
-##### Preprocessed LRS2 folder structure
+### 3.5 模型安装
+我把模型都放在一起，方便在windows下的读者能够直接下载模型安装到对应位置。
+链接: https://pan.baidu.com/s/1xIi0HJKMs7_V8mt5JVSsgw 提取码: kgmg 
+```BASH
+syncnet_v2.model和example.avi需要放置到Wav2Lip-master\evaluation\syncnet_python-master\data下，无data文件夹请自行创建
+sfd_face.pth请放置在Wav2Lip-master\evaluation\syncnet_python-master\detectors\s3fd\weights下
+s3fd-619a316812.pth请放置在Wav2Lip-master\face_detection\detection\sfd下
+wav2lip.pth和wav2lip_gan.pth文件请放在Wav2Lip-master\checkpoints下
 ```
-preprocessed_root (lrs2_preprocessed)
-├── list of folders
-|	├── Folders with five-digit numbered video IDs
-|	│   ├── *.jpg
-|	│   ├── audio.wav
-```
-Train!
-----------
-There are two major steps: (i) Train the expert lip-sync discriminator, (ii) Train the Wav2Lip model(s).
-##### Training the expert discriminator
-You can download [the pre-trained weights](#getting-the-weights) if you want to skip this step. To train it:
+##  4. 项目结构
+这里只显示操作涉及的文件夹和文件，没有提到的文件或文件夹不代表不需要
 ```bash
-python color_syncnet_train.py --data_root lrs2_preprocessed/ --checkpoint_dir <folder_to_save_checkpoints>
+Wav2Lip-master/
+│
+├── checkpoints/            # wav2lip模型存放地
+│   ├── .pth      #预训练的模型文件
+│   ├── README
+│
+├── evaluation/           #评测文件夹
+│   ├── inputframes/      # 由输入视频提取的图像
+│   ├── outputframes/     # 由输出视频提取的图像
+│   ├── scores_LSE/      # 评测文件，请保证该文件下的py文件复制到syncnet_python-master中
+│   ├── syncnet_python-master/     # LSE-C LSE-D评估请在该文件夹下进行
+│   ├── pytorch-fid-master/      #这里存放pytorch-fid项目 
+│   ├── .../
+│
+├── inputmp4/            # 可以将作为人脸输入的jpg，mp4放在这个文件夹下
+│   ├── ...      #
+│
+├── inputwav/            # 可以将作为音频输入的wav放在这个文件夹下
+│   ├── ...
+│
+├── face_detection/            # 请将下载到的s3fd-619a316812.pth文件放置在face_detection\detection\sfd下
+│   ├── ...
+│
+├── results/            # 生成的输出视频会出现在这个文件夹下
+│   ├── ...
+├── requirements.txt # 依赖项
+├── README.md        # 项目说明
 ```
-##### Training the Wav2Lip models
-You can either train the model without the additional visual quality discriminator (< 1 day of training) or use the discriminator (~2 days). For the former, run: 
+## 5. 运行项目 
+确保inputmp4文件夹中和inputwav中存在格式正确的文件
 ```bash
-python wav2lip_train.py --data_root lrs2_preprocessed/ --checkpoint_dir <folder_to_save_checkpoints> --syncnet_checkpoint_path <path_to_expert_disc_checkpoint>
+运行下列命令：
+python inference.py --checkpoint_path checkpoints\wav2lip_gan.pth --face inputmp4\video1.mp4 --audio inputwav\test1.wav#生成视频
 ```
-To train with the visual quality discriminator, you should run `hq_wav2lip_train.py` instead. The arguments for both files are similar. In both cases, you can resume training as well. Look at `python wav2lip_train.py --help` for more details. You can also set additional less commonly-used hyper-parameters at the bottom of the `hparams.py` file.
-Training on datasets other than LRS2
-------------------------------------
-Training on other datasets might require modifications to the code. Please read the following before you raise an issue:
-- You might not get good results by training/fine-tuning on a few minutes of a single speaker. This is a separate research problem, to which we do not have a solution yet. Thus, we would most likely not be able to resolve your issue. 
-- You must train the expert discriminator for your own dataset before training Wav2Lip.
-- If it is your own dataset downloaded from the web, in most cases, needs to be sync-corrected.
-- Be mindful of the FPS of the videos of your dataset. Changes to FPS would need significant code changes. 
-- The expert discriminator's eval loss should go down to ~0.25 and the Wav2Lip eval sync loss should go down to ~0.2 to get good results. 
-When raising an issue on this topic, please let us know that you are aware of all these points.
-We have an HD model trained on a dataset allowing commercial usage. The size of the generated face will be 192 x 288 in our new model.
-Evaluation
-----------
-Please check the `evaluation/` folder for the instructions.
-License and Citation
-----------
-This repository can only be used for personal/research/non-commercial purposes. However, for commercial requests, please contact us directly at rudrabha@synclabs.so or prajwal@synclabs.so. We have a turn-key hosted API with new and improved lip-syncing models here: https://synclabs.so/
-The size of the generated face will be 192 x 288 in our new models. Please cite the following paper if you use this repository:
+
+## 6. 测试
+### 6.1 LSE-C、LSE-D指数测试方法
+```BASH
+cd evaluation/synsyncnet_python-master
+python run_pipeline.py --videofile path to\result_voice.mp4 --reference wav2lip --data_dir tmp_dir#将path to\result_voice.mp4改为你要检测的生成视频路径
+python calculate_scores_real_videos.py --videofile path to\result_voice.mp4 --reference wav2lip --data_dir tmp_dir >> all_scores.txt
+#将path to\result_voice.mp4改为你要检测的生成视频路径，结果会生成在all_scores.txt
+#注意：在结束测试后，如果要进行下一次测试前请先删除产生的tmp_dir文件夹
 ```
-@inproceedings{10.1145/3394171.3413532,
-author = {Prajwal, K R and Mukhopadhyay, Rudrabha and Namboodiri, Vinay P. and Jawahar, C.V.},
-title = {A Lip Sync Expert Is All You Need for Speech to Lip Generation In the Wild},
-year = {2020},
-isbn = {9781450379885},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3394171.3413532},
-doi = {10.1145/3394171.3413532},
-booktitle = {Proceedings of the 28th ACM International Conference on Multimedia},
-pages = {484–492},
-numpages = {9},
-keywords = {lip sync, talking face generation, video generation},
-location = {Seattle, WA, USA},
-series = {MM '20}
-}
+### 6.2 FID指数测试方法
+```BASH
+python get_frames.py path/to/your/video.mp4 --output_folder evaluation\outputframes（inputframes） --frame_interval 1 --max_threads 4#用该命令将生成视频（输入视频）提取为图像存放在指定文件夹中
+python -m pytorch_fid evaluation\inputframes evaluation\outputframes#生成结果
+#注意：在结束测试后，如果要进行下一次测试前请先删除产生的inputframes和outputframes文件夹中的图片
 ```
-Acknowledgments
-----------
-Parts of the code structure are inspired by this [TTS repository](https://github.com/r9y9/deepvoice3_pytorch). We thank the author for this wonderful code. The code for Face Detection has been taken from the [face_alignment](https://github.com/1adrianb/face-alignment) repository. We thank the authors for releasing their code and models. We thank [zabique](https://github.com/zabique) for the tutorial collab notebook.
-## Acknowledgements
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+## 7. 常见问题
+
+问题 1 FID指数测试无法运行
+检查被比对的文件夹中存放数据是否正确
+在python -m pytorch_fid evaluation\inputframes evaluation\outputframes后加--num-workers 0 --device cuda:0
+
+问题 2 linux下运行LSE-C测试在最后一步被KILLED
+尝试缩短生成视频的长度，如果无法实现，请尝试在windows环境下运行
+
+
+## 8. 联系信息
+
+姓名：majunchen
+邮箱：2406722613@qq.com
+GitHub： GitHub 链接
