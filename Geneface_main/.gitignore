@@ -1,0 +1,10 @@
+GeneFace/data/*
+GeneFace/lrs3.zip
+GeneFace/infer_out/*
+GeneFace/checkpoints/*
+checkpoints/*
+GeneFace/data_util/face_tracking/3DMM/*
+GeneFace/deep_3drecon/BFM/*
+GeneFace/deep_3drecon/checkpoints/*
+OrgModel/
+conda/

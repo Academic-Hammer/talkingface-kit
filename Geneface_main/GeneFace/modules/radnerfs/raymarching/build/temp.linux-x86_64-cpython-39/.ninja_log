@@ -1,0 +1,7 @@
+# ninja log v5
+0	9676	1734544964548549022	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/bindings.o	d44c8657275f4fca
+0	29459	1734544984338544964	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/raymarching.o	3dfa6976fffa9354
+3	11384	1734727728357554141	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/bindings.o	39df9da0bf6cd4c3
+3	40521	1734727757505841825	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/raymarching/src/raymarching.o	67eddab14736585c
+4	11484	1734801106313605309	/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/src/bindings.o	48494375ed4a525f
+5	40347	1734801135185888440	/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/build/temp.linux-x86_64-cpython-39/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/raymarching/src/raymarching.o	25f431ed67794e9d

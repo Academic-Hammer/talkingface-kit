@@ -1,0 +1,7 @@
+# ninja log v5
+0	8801	1734544843628577063	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/bindings.o	70f4c08fcd2ce153
+1	29563	1734544864398561069	/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/build/temp.linux-x86_64-cpython-39/home/dedfaf/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/shencoder.o	326c39b4f9020f3e
+3	10906	1734727574520035816	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/bindings.o	46dcc04c9d469f7b
+3	40312	1734727603932326104	/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/shencoder.o	3e556628932a814d
+4	10700	1734800952168093713	/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/shencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/bindings.o	30ac52a8f1cfc13e
+5	40338	1734800981812384414	/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/shencoder/build/temp.linux-x86_64-cpython-39/output/GeneFace_Reproduction/GeneFace/modules/radnerfs/encoders/shencoder/src/shencoder.o	7b5d91f346a32763
