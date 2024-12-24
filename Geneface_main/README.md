@@ -2,25 +2,14 @@
 
 这是2024年语音识别课程大作业的仓库，用于[GeneFace](https://github.com/yerfor/GeneFace)的复现
 
-## 环境
+## 报告
 
-本仓库在Ubuntu20.04中实现，且需要自行安装CUDA11.3环境。Github无法上传conda环境，请参考<https://github.com/yerfor/GeneFace/blob/main/docs/prepare_env/install_guide-zh.md>配置环境
+- [报告](./report.pdf)
+- [复现流程](./C3.md)
 
-``` sh
-conda activate ./conda
-```
+## 获取项目
 
-除此之外，需要通过apt安装以下包
+- [校内网盘](https://maru.hana.im/dedfaf/filebrowser/share/w_i9-LQN)
+- [校外网盘（使用nlibvpn）](https://nlibvpn.bit.edu.cn/https/77726476706e69737468656265737421f8f64f9d2a317a45301b8dbf821b26201ef36cf7/dedfaf/filebrowser/share/w_i9-LQN)
 
-``` sh
-apt-get install libasound2-dev portaudio19-dev # dependency for pyaudio
-
-```
-
-激活环境后，需要运行以下命令，从torch-ngp构建CUDA插件
-
-``` sh
-bash docs/prepare_env/install_ext.sh
-```
-
-> 注：可能需要修改本地命令行配置以使用正确的本地conda环境
+其中`Geneface.zip`为项目文件，`Geneface_docker.tar`为本项目封装的docker
