@@ -70,9 +70,14 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted 
 
 ### 2、启动镜像
 ```
-docker run -it \
+docker run --runtime=nvidia \
+ --gpus all \
+ -it \
  evaluate_image \
  bash
+
+# 或者
+ docker run --runtime=nvidia --gpus all -it evaluate_image bash
 ```
 + evaluate_image：
 这是要启动的 Docker 镜像的名称和标签。
