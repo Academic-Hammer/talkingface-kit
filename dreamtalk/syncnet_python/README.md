@@ -150,3 +150,17 @@
 ```
 
 原论文没有 PSNR 评估，SSIM 评估的分数为 0.86/0.85/0.69 ( MEAD / HDTF / Voxceleb2 )
+
+### 定性评估
+
+针对源码中给出的 happy, angry 的情绪风格 mat 进行了评估，评估结果如下：
+
+|Ground Truth| Reference | Result |
+|:---:|:---:|:---:|
+|![](./emotion/gt.png)|![](./emotion/output/angry_256_random_15/frame_0059_eval.png)|![](./emotion/output/angry_256_random_15/frame_0059_ref.png)|
+
+|Ground Truth| Reference | Result |
+|:---:|:---:|:---:|
+|![](./emotion/gt.png)|![](./emotion/output/happy_256_random_15/frame_0066_eval.png)|![](./emotion/output/happy_256_random_15/frame_0066_ref.png)|
+
+
