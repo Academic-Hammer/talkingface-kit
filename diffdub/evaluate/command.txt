@@ -1,0 +1,2 @@
+python run_pipeline.py --videofile data/one_shot_pred.mp4 --reference wav2lip --data_dir tmp_dir
+python calculate_scores_real_videos.py --videofile data/one_shot_pred.mp4 --reference wav2lip --data_dir tmp_dir >> all_scores.txt
