@@ -35,9 +35,6 @@
 
 **我们在此次训练中只采用了RAVDESS数据集作为输入。**
 
-3D-ETF数据集的下载链接： 
-
-<https://drive.google.com/file/d/1czXc0B_nxN6v2ASD8tpkw4W-QYkE21BG/view?usp=drive_link>
 
 ## 2.训练设备及环境
 
