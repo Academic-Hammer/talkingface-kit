@@ -1,4 +1,5 @@
 （特别注意：由于评估数据集raw文件夹中的视频过大，无法上传到github上，请自行将raw文件夹放到根目录下）
+PS：docker镜像下载地址https://drive.google.com/file/d/1H9K5E8GqzK1EDPScpSeiW0j5IksmWORo/view?usp=sharing
 
 1. 按照以下代码格式对数据集进行预处理，数据集可选用raw文件夹下的任意视频。 
 python scripts/prepare_testing_files.py --src_pose_path /path/to/your/pose_path.mp4 --src_audio_path /path/to/your/audio_path.mp4 --src_mouth_frame_path /path/to/your/mouth_path.mp4 --src_input_path /path/to/your/input.mp4 --csv_path raw/metadata.csv
