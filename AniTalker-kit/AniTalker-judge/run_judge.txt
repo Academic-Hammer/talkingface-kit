@@ -1,0 +1,19 @@
+首先拉取镜像：
+docker pull gre123/anitalkerjudge:v1
+
+接着运行docker run命令：
+docker run --rm --gpus all \
+-v your_stand_videos_dir_path:/app/stand_videos_dir_path \
+-v your_generate_videos_dir_path:/app/generate_videos_dir_path \
+gre123/anitalkerjudge:v1 \
+/app/stand_videos_dir_path \
+/app/generate_videos_dir_path
+[--device your_device]（默认值为cuda:0）
+
+其中，your_stand_videos_dir_path、your_generate_videos_dir_path为文件夹的绝对路径。
+
+注意：评测程序会对两个文件夹中名称相同的视频进行评测指标的计算，运行该程序需要确保对应的参照视频和生成视频名称相同且时长相同。
+
+例：
+
+docker run --rm --gpus all --memory="64g" --cpus="4" -v F:/AniTalker/AniTalker-judge/demo/raw:/app/demo/raw -v F:/AniTalker/AniTalker-judge/demo/synthetic:/app/demo/synthetic gre123/anitalkerjudge:v1 /app/demo/raw /app/demo/synthetic
