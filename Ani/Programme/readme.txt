@@ -24,3 +24,5 @@ video直接生成目标video:
 阶段2: 
     在stage2.yaml中加入阶段1训练的产物
     accelerate launch train_stage_2.py --config ./configs/train/stage2.yaml
+
+docker封装: docker build .
