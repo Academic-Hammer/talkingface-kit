@@ -218,7 +218,7 @@ def evaluate_with_monitoring(generator, kp_detector, depth_encoder, depth_decode
             memory_monitor.log_memory(f"Start of batch {batch_idx}")
 
             # Move data to device
-            source = batch['source_self'].to(device)
+            source = batch['source'].to(device)
             driving = batch['driving'].to(device)
             generated = batch['generated'].to(device)
 
