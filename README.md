@@ -194,7 +194,7 @@ docker run --gpus all `
 - NIQE (无参考图像质量评估)
 - PSNR (峰值信噪比)
 - SSIM (结构相似性)
-- FID (Fréchet Inception Distance)
+- FID (Fréchet Inception Distance)【fid的运算由于evaluation.py中有误，后来在calculate_fid.py中实现】
 - LSE-C (内容一致性评估)
 - LSE-D (驱动一致性评估)
 
