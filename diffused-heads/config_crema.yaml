@@ -1,0 +1,17 @@
+audio: /app/demo.wav
+checkpoint: ./checkpoints/crema_script.pt
+diffusion:
+  image_size: 128
+  in_channels: 3
+  n_timesteps: 1000
+  out_channels: 6
+encoder_checkpoint: ./checkpoints/audio_encoder.pt
+gpu: true
+id_frame: /app/demo.png
+id_frame_random: false
+inference_steps: 100
+output: /app/testgen/demo.mp4
+unet:
+  motion_channels: 3
+  n_audio_motion_embs: 2
+  n_motion_frames: 2
