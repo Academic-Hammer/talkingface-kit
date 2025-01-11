@@ -1,0 +1,19 @@
+# 忽略以下文件和目录
+.DS_Store
+.git
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.idea
+.vscode
+*.ipynb_checkpoints
+*.bzip2
+*.key
+*.mp4
+*.wav
+*.zip
+*.pickle
+train/
+data/
+examples/

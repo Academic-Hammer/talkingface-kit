@@ -1,0 +1,15 @@
+# Ignore large files
+*.mp4
+*.dat
+*.pth
+*.pickle
+*.wav
+*.bz2
+*.npy
+
+# Ignore data directories
+data/
+examples/ckpt/
+examples/dump/
+train/
+xunlian/
