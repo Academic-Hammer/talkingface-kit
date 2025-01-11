@@ -1,0 +1,10 @@
+ffmpeg-python
+opencv-python
+face_alignment
+scikit-learn
+pydub
+soundfile
+librosa
+pysptk
+pyworld
+resemblyzer
